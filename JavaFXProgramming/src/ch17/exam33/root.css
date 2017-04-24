@@ -1,0 +1,35 @@
+#vbox1{
+    -fx-background-color: rgba(255,0,0,0.5); /*alpha: 투명도 0이면 완전 투명*/
+}
+
+#vbox2{
+    -fx-background-color: linear-gradient(to bottom right,#000000, #FFFFFF);/*오른쪽으로, 검정색에서 하얀색으로 그라데이션*/
+}
+
+#vbox3{
+    -fx-background-radius:50;
+    /*-fx-background-color: radial-gradient(center 50% 50%, radius 50%, #ffffff, #000000)오른쪽으로, 검정색에서 하얀색으로 그라데이션*/
+    -fx-background-color: radial-gradient(center 20% 50%, radius 50%, #ffffff, #000000);/* radius 퍼짐의 정도*/
+}
+
+#vbox4{
+    -fx-background-color: skyblue;
+    -fx-background-image: url("images/icon.gif"); /*무늬를 만드는 방법*/
+   
+
+}
+
+
+#vbox5{
+    
+   -fx-background-color: skyblue;
+    -fx-background-image: url("images/icon.gif"); /*무늬를 만드는 방법*/
+    -fx-background-repeat: no-repeat;
+}
+#vbox6{
+    
+   -fx-background-color: skyblue;
+    -fx-background-image: url("images/icon.gif"); /*무늬를 만드는 방법*/
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
