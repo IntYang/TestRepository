@@ -9,7 +9,7 @@
 				//console.log(from);
 				//console.log(to == undefined);
 				
-				if(to==undefined){
+				if(to===undefined){
 					to = from;
 					from = 1;
 				}
