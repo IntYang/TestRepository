@@ -17,4 +17,11 @@ public class HomeController {
 	public String html(){
 		return "html";
 	}
+	//2017.04.26 수업 내용
+	@RequestMapping("/css/exam01")
+	public String cssExam01(){
+		return "css/exam01"; //WEB-INF/views/css/exam01.jsp임 원래
+	}
+	
+	
 }
