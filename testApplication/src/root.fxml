@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+   <children>
+      <ImageView fitHeight="400.0" fitWidth="800.0" pickOnBounds="true">
+         <image>
+            <Image url="@images/background.jpg" />
+         </image>
+      </ImageView>
+      <BorderPane layoutX="167.0" layoutY="50.0" prefHeight="300.0" prefWidth="500.0" style="-fx-background-color: gray;">
+         <center>
+            <ImageView fitHeight="150.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+         </center>
+         <bottom>
+            <HBox prefHeight="70.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button maxHeight="1.7976931348623157E308" mnemonicParsing="false" prefHeight="70.0" prefWidth="150.0" style="-fx-graphic: images/call.png;" text="Button" />
+                  <Button maxHeight="1.7976931348623157E308" mnemonicParsing="false" prefHeight="70.0" prefWidth="200.0" text="Button" />
+                  <Button maxHeight="1.7976931348623157E308" mnemonicParsing="false" prefHeight="70.0" prefWidth="150.0" text="Button" />
+               </children>
+            </HBox>
+         </bottom>
+      </BorderPane>
+   </children>
+</AnchorPane>
