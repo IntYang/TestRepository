@@ -23,5 +23,31 @@ public class HomeController {
 		return "css/exam01"; //WEB-INF/views/css/exam01.jsp임 원래
 	}
 	
+	@RequestMapping("/css/exam02")
+	public String cssExam02(){
+		return "css/exam02"; //WEB-INF/views/css/exam01.jsp임 원래
+	}
+	
+	@RequestMapping("/css/exam03")
+	public String cssExam03(){
+		return "css/exam03"; 
+	}
+	
+	@RequestMapping("/javascript/exam01")
+	public String javascriptExam01(){
+		return "/javascript/exam01"; 
+	}
+	@RequestMapping("/javascript/exam02")
+	public String javascriptExam02(){
+		return "/javascript/exam02";
+	}
+	@RequestMapping("/javascript/exam03")
+	public String javascriptExam03(){
+		return "/javascript/exam03";
+	}	
+	@RequestMapping("/javascript/exam04")
+	public String javascriptExam04(){
+		return "/javascript/exam04";
+	}	
 	
 }
