@@ -30,7 +30,7 @@
 				console.log(arr3[i]);
 			}
 			console.log("---------------");
-			arr3.splice(0, 2);
+			arr3.splice(0, 2                 );
 			for (var i = 0; i < arr3.length; i++) {
 				console.log(arr3[i]);
 			}
