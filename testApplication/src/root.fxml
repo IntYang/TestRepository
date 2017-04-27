@@ -7,8 +7,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="RootController">
    <children>
       <ImageView fitHeight="400.0" fitWidth="800.0" pickOnBounds="true">
          <image>
@@ -17,17 +16,32 @@
       </ImageView>
       <BorderPane layoutX="167.0" layoutY="50.0" prefHeight="300.0" prefWidth="500.0" style="-fx-background-color: gray;">
          <center>
-            <ImageView fitHeight="150.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+            <ImageView fx:id="screen" fitHeight="150.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+							<image>
+							 <Image url="@images/doorfront.png" />
+							</image>
+						</ImageView>
          </center>
          <bottom>
             <HBox prefHeight="70.0" prefWidth="100.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button maxHeight="1.7976931348623157E308" mnemonicParsing="false" prefHeight="70.0" prefWidth="150.0" style="-fx-graphic: images/call.png;" text="Button" />
-                  <Button maxHeight="1.7976931348623157E308" mnemonicParsing="false" prefHeight="70.0" prefWidth="200.0" text="Button" />
-                  <Button maxHeight="1.7976931348623157E308" mnemonicParsing="false" prefHeight="70.0" prefWidth="150.0" text="Button" />
+                  <Button fx:id="btn_call" maxHeight="1.7976931348623157E308" mnemonicParsing="false" prefHeight="70.0" prefWidth="150.0">
+										<graphic>
+											<ImageView fitHeight="70.0" fitWidth="150.0" preserveRatio="true">
+												<image>
+													<Image url="@images/call.png" />
+												</image>
+											</ImageView>
+										</graphic>
+									</Button>
+                  <Button fx:id="btn_show" maxHeight="1.7976931348623157E308" mnemonicParsing="false" prefHeight="70.0" prefWidth="200.0" text="외부 보기" />
+                  <Button fx:id="btn_open" maxHeight="1.7976931348623157E308" mnemonicParsing="false" prefHeight="70.0" prefWidth="150.0" text="문 열림" />
                </children>
             </HBox>
          </bottom>
+         <right>
+            <Slider orientation="VERTICAL" prefHeight="114.0" prefWidth="14.0" BorderPane.alignment="BOTTOM_RIGHT" />
+         </right>
       </BorderPane>
    </children>
 </AnchorPane>
