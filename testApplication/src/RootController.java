@@ -20,7 +20,13 @@ public class RootController implements Initializable {
 
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
-		// TODO
+
+		//버튼 처리
+		//1. 전화 버튼
+		//선택: 문 앞 / 현관(동) 앞
+		//음량 조절
+
+
 	}	
 	
 }
