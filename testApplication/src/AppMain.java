@@ -2,13 +2,6 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundImage;
-import javafx.scene.layout.BackgroundPosition;
-import javafx.scene.layout.BackgroundRepeat;
-import javafx.scene.layout.BackgroundSize;
-import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 public class AppMain extends Application {
@@ -23,8 +16,6 @@ public class AppMain extends Application {
         primaryStage.setScene(scene);
         primaryStage.setTitle("창제목");
         
-        
-       
         primaryStage.show();
     }
     

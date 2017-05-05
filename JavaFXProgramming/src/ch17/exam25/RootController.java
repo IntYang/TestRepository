@@ -42,7 +42,7 @@ public class RootController implements Initializable {
 
 	 @Override
 	 public void initialize(URL url, ResourceBundle rb) {
-			Media media = new Media(getClass().getResource("media/video.m4v").toString());
+			Media media = new Media(getClass().getResource("media/audio.wav").toString());
 			//Media media = new Media(getClass().getResource("media/audio.wav").toString());
 			MediaPlayer mediaPlayer = new MediaPlayer(media);
 			// 동영상을 보여주는 미디어 뷰 등록 -> 미디어 플레어 상태에 따라 동영상 보여주겠다는 의미
