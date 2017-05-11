@@ -10,8 +10,8 @@
 		<script src="/WebApplication/resources/bootstrap-3.3.7/js/bootstrap.min.js" type="text/javascript"></script>
 		<script>
 			function changeDivContent(){
-				$("#div1").html("<p> 변경된 내용 </p>");
-				$("#div2").append("<p> 변경된 내용 </p>");
+				$("#div1").html("<p> 변경된 내용 </p>"); // 내용 통째로 바꾸는 것
+				$("#div2").append("<p> 변경된 내용 </p>"); // 내용 추가
 			}
 			function changeCSS(){
 				$("#div3").css("background-color","#ffff00");

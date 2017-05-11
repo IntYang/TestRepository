@@ -16,7 +16,7 @@
 			
 			function handleBtn2(){
 				var img1 = $("#img1");
-				img1.attr("src","/WebApplication/resources/image/photo03.jpg" );
+				img1.attr("src","/WebApplication/resources/image/photo03.jpg" ); // attr 속성 다 바꾸는 것  
 			}
 			function handleBtn3(){
 				var class1 =$(".class1");

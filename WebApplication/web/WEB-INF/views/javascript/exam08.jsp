@@ -10,7 +10,7 @@
 		<script src="/WebApplication/resources/bootstrap-3.3.7/js/bootstrap.min.js" type="text/javascript"></script>
 		<script>
 			var car = { // JSON
-				//필드
+				//필드 :붙이는 건 네트워크 전송 때문
 				"model":"승용차",
 				"company":"현대",
 				"speed":0
