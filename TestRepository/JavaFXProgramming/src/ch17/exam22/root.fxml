@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="263.0" prefWidth="434.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch17.exam22.RootController">
+   <children>
+      <TableView fx:id="tableView" layoutX="13.0" layoutY="14.0" prefHeight="235.0" prefWidth="408.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text="모델명" />
+          <TableColumn prefWidth="75.0" text="이미지" />
+            <TableColumn prefWidth="257.0" text="설명" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

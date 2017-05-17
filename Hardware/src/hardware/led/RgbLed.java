@@ -1,4 +1,3 @@
-
 package hardware.led;
 
 import com.pi4j.io.gpio.GpioController;
@@ -36,21 +35,38 @@ public class RgbLed {
 	}
 	//Method
 	
-	public void red(){
-		redPin.low();
-		greenPin.high();
-		bluePin.high();
+	public void rgb(boolean red, boolean green, boolean blue){
+		if(red)redPin.low();
+		else redPin.high();
 		
+		if(green) greenPin.low();
+		else greenPin.high();
+		
+		if(blue) bluePin.low();
+		else bluePin.high();
+		
+	}
+	
+	public void red(boolean state){
+		if(state)
+			redPin.low();
+		
+		else
+			redPin.high();
 	}	
-	public void green(){
-		redPin.high();
-		greenPin.low();
-		bluePin.high();
+	public void green(boolean state){
+		
+		if(state)
+			greenPin.low();
+		else
+			greenPin.high();
+	
 	}	
-	public void blue(){
-		redPin.high();
-		greenPin.high();
-		bluePin.low();
+	public void blue(boolean state){
+		if(state)
+			bluePin.low();
+		else
+			bluePin.high();
 	}	
 	
 	
@@ -59,11 +75,11 @@ public class RgbLed {
 		//test.green();
 		
 	while(true){
-			test.red();
+			test.rgb(true,false,false);
 			Thread.sleep(1000);
-			test.green();
+			test.rgb(false,true,false);
 			Thread.sleep(1000);
-			test.blue();
+			test.rgb(false, false, true);
 			Thread.sleep(1000);
 		}
 		

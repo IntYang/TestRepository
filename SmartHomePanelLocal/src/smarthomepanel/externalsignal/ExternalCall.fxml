@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smarthomepanel.externalsignal.ExternalCallController">
+    <children>
+        <ImageView fitHeight="200.0" fitWidth="300.0" layoutY="-6.0" pickOnBounds="true">
+            <image>
+                <Image url="@../images/backgrounds/background8.jpg" />
+            </image>
+        </ImageView>
+        <Button layoutX="118.0" layoutY="124.0" mnemonicParsing="false" onAction="#handleBtnCall" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 30; -fx-border-width: 2;" text="호출" textFill="WHITE">
+            <font>
+                <Font name="Malgun Gothic" size="18.0" />
+            </font>
+        </Button>
+        <Label layoutX="122.0" layoutY="70.0" text="동" textFill="WHITE">
+            <font>
+                <Font name="Malgun Gothic" size="20.0" />
+            </font>
+         <effect>
+            <DropShadow />
+         </effect>
+        </Label>
+        <Label layoutX="234.0" layoutY="70.0" text="호" textFill="WHITE">
+            <font>
+                <Font name="Malgun Gothic" size="20.0" />
+            </font>
+         <effect>
+            <DropShadow />
+         </effect>
+        </Label>
+      <ImageView fitHeight="25.0" fitWidth="28.0" layoutX="93.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+         <effect>
+            <DropShadow />
+         </effect>
+         <image>
+            <Image url="@../call/images/telephone.png" />
+         </image>
+      </ImageView>
+      <Label alignment="CENTER" layoutX="119.0" layoutY="11.0" text="세대 호출" textFill="WHITE">
+         <effect>
+            <DropShadow />
+         </effect>
+         <font>
+            <Font name="Malgun Gothic" size="20.0" />
+         </font>
+      </Label>
+      <Separator layoutX="15.0" layoutY="47.0" prefWidth="270.0" />
+      <TextField fx:id="txtDong" alignment="CENTER_RIGHT" layoutX="22.0" layoutY="63.0" prefHeight="43.0" prefWidth="100.0" style="-fx-background-color: transparent; -fx-text-fill: white;" text="0000">
+         <font>
+            <Font name="Malgun Gothic" size="20.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="txtHo" alignment="CENTER_RIGHT" layoutX="146.0" layoutY="63.0" prefHeight="43.0" prefWidth="88.0" style="-fx-background-color: transparent; -fx-text-fill: white;" text="0000">
+         <font>
+            <Font name="Malgun Gothic" size="20.0" />
+         </font>
+      </TextField>
+    </children>
+</AnchorPane>

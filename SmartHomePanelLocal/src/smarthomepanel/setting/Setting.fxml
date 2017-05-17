@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" fx:id="settingControl" prefHeight="480.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smarthomepanel.setting.SettingController">
+    <children>
+        <ImageView fitHeight="480.0" fitWidth="800.0" pickOnBounds="true">
+            <image>
+                <Image url="@image/background8.jpg" />
+            </image>
+        </ImageView>
+        <Button fx:id="btnScreen" layoutX="170.0" layoutY="175.0" mnemonicParsing="false" style="-fx-background-color: transparent;">
+            <graphic>
+                <ImageView fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@image/screen.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+        <Button fx:id="btnSound" layoutX="480.0" layoutY="175.0" mnemonicParsing="false" style="-fx-background-color: transparent;">
+            <graphic>
+                <ImageView fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@image/sound.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+        <Label layoutX="400.0" layoutY="22.0" style="-fx-background-color: transparent;" text="설정" textFill="WHITE">
+            <font>
+                <Font size="27.0" />
+            </font>
+        </Label>
+        <Button fx:id="btnBack" layoutX="692.0" layoutY="381.0" mnemonicParsing="false" style="-fx-background-color: transparent;">
+            <graphic>
+                <ImageView fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@image/back(white).png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+        <ImageView fitWidth="40.0" layoutX="355.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@image/settings.png" />
+            </image>
+        </ImageView>
+        <Separator layoutX="10.0" layoutY="70.0" prefHeight="0.0" prefWidth="780.0" />
+        <Label fx:id="lblTime" layoutX="20.0" layoutY="25.0" text="00:00:00" textFill="WHITE">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Label>
+    </children>
+</AnchorPane>

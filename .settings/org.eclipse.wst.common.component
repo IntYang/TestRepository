@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="TestRepository">
+        <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/Hardware/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/JavaApplication/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/JavaFXProgramming/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/JavaIoProgramming/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/JavaIoProgrammingCh18Exam22Client/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/JavaIoProgrammingCh18Exam22Server/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/JavaProgramming/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/RPi-LCD-JavaFXProgramming-Preloader/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/RPi-LCD-JavaFXProgramming/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/RPi-LCD-JavaFXProgramming1/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/RPi-LCD-JavaProgramming/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/SmartHomePanelLocal/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/TestRepository/testApplication/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/TestRepository/WebApplication/src/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/WebApplication/src/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/TestRepository/JavaApplication/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/TestRepository/JavaFXProgramming/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/TestRepository/JavaIoProgramming/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/TestRepository/JavaIoProgrammingCh18Exam22Client/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/TestRepository/JavaIoProgrammingCh18Exam22Server/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/TestRepository/JavaProgramming/src"/>
+        <property name="context-root" value="TestRepository"/>
+        <property name="java-output-path" value="/TestRepository/Hardware/build/classes"/>
+    </wb-module>
+</project-modules>

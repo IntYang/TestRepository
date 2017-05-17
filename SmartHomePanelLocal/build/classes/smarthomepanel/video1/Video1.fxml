@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.media.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<StackPane fx:id="videoControl" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="800.0" styleClass="background" stylesheets="@theme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smarthomepanel.video1.VideoController1">
+   <children>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="800.0" StackPane.alignment="TOP_LEFT">
+         <children>
+            <AnchorPane fx:id="anchorpaneScreen" layoutX="146.0" layoutY="114.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="220.0" prefWidth="420.0" style="-fx-background-color: #BABABA; -fx-background-radius: 10; -fx-border-radius: 20;">
+               <children>
+                  <ImageView fx:id="imgScreen" fitHeight="210.0" fitWidth="400.0" layoutX="14.0" layoutY="5.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@images/icons/suyang/buildingfront.JPG" />
+                     </image>
+                  </ImageView>
+               </children></AnchorPane>
+            <AnchorPane layoutY="379.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="800.0" style="-fx-background-color: black;">
+               <children>
+                  <Button fx:id="btn_BFront" alignment="CENTER" layoutX="168.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleBtnBFront" prefHeight="80.0" prefWidth="80.0" style="-fx-background-color: transparent;" stylesheets="@theme.css" textAlignment="RIGHT" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="29.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fx:id="imgBFront" fitHeight="65.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/icons/suyang/apartment.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="btn_DFront" alignment="CENTER" layoutX="337.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleBtnDFront" prefHeight="80.0" prefWidth="80.0" style="-fx-background-color: transparent;" stylesheets="@theme.css" textAlignment="RIGHT" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="29.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fx:id="imgDFront" fitHeight="65.0" fitWidth="60.0" pickOnBounds="true">
+                           <image>
+                              <Image url="@images/icons/suyang/entrance.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="btn_PFront" alignment="CENTER" layoutX="492.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleBtnPark" prefHeight="80.0" prefWidth="95.0" style="-fx-background-color: transparent;" stylesheets="@theme.css" textAlignment="RIGHT" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="29.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fx:id="imgPFront" fitHeight="78.0" fitWidth="70.0" pickOnBounds="true">
+                           <image>
+                              <Image url="@images/icons/suyang/parking.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </AnchorPane>
+            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="800.0" style="-fx-background-color: trn;">
+               <children>
+                  <Label fx:id="lblTime" layoutX="100.0" layoutY="39.0" prefHeight="25.0" prefWidth="109.0" text="00:00:00" textFill="WHITE">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="58.0" fitWidth="63.0" layoutX="324.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/icons/suyang/eye.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="388.0" layoutY="23.0" text="보기" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="35.0" />
+                     </font>
+                  </Label>
+                  <Separator layoutX="81.0" layoutY="79.0" prefHeight="0.0" prefWidth="635.0" />
+               </children>
+            </AnchorPane>
+            <Button fx:id="btn_Back" layoutX="14.0" layoutY="204.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: transparent;">
+               <graphic>
+                  <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/icons/suyang/back.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="btn_Call" layoutX="706.0" layoutY="102.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: transparent;">
+               <graphic>
+                  <ImageView fx:id="imgCall" fitHeight="46.0" fitWidth="50.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@images/icons/suyang/phone-call.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="btn_Siren" layoutX="706.0" layoutY="229.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: transparent;">
+               <graphic>
+                  <ImageView fx:id="imgSiren" fitHeight="46.0" fitWidth="50.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@images/icons/suyang/siren.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="btn_Door" alignment="CENTER" layoutX="706.0" layoutY="309.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleBtnOpen" prefHeight="35.0" prefWidth="50.0" style="-fx-background-color: transparent;" textFill="WHITE">
+               <graphic>
+                  <ImageView fx:id="imgDoor" fitHeight="50.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/icons/suyang/closeddoor4.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="btn_capture" layoutX="706.0" layoutY="164.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: transparent;">
+               <graphic>
+                  <ImageView fx:id="imgCapture" fitHeight="46.0" fitWidth="50.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@images/icons/suyang/camera.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Slider fx:id="slider" layoutX="622.0" layoutY="114.0" orientation="VERTICAL" prefHeight="216.0" prefWidth="14.0" showTickMarks="true" />
+            <Button fx:id="btn_speaker" layoutX="602.0" layoutY="336.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: transparent;" text="Button">
+               <graphic>
+                  <ImageView fx:id="imgSpeaker" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@images/icons/speaker.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>

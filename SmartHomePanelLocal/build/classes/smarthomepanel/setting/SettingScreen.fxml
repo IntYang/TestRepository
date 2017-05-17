@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" fx:id="ScreenControl" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smarthomepanel.setting.SettingScreenController">
+    <children>
+        <ImageView fitHeight="480.0" fitWidth="800.0" pickOnBounds="true">
+            <image>
+                <Image url="@image/background8.jpg" />
+            </image>
+        </ImageView>
+        <Label layoutX="395.0" layoutY="25.0" text="화면 설정" textFill="WHITE">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Label>
+        <ImageView fitWidth="50.0" layoutX="334.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@image/screen.png" />
+            </image>
+        </ImageView>
+        <Label layoutX="142.0" layoutY="198.0" text="밝기조절" textAlignment="CENTER" textFill="WHITE">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Label>
+        <Label layoutX="116.0" layoutY="282.0" text="글씨 크기 조절" textFill="WHITE">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Label>       
+         
+        <Button fx:id="btnHome" layoutX="709.0" layoutY="9.0" mnemonicParsing="false" style="-fx-background-color: transparent;">
+            <graphic>
+                <ImageView fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@image/home(white).png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+        <Button fx:id="btnBack" layoutX="696.0" layoutY="390.0" mnemonicParsing="false" style="-fx-background-color: transparent;">
+            <graphic>
+                <ImageView fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@image/back(white).png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+        <Slider fx:id="FontSlider" layoutX="268.0" layoutY="284.0" prefHeight="20.0" prefWidth="320.0" />
+        <Slider fx:id="LightSlider" layoutX="268.0" layoutY="200.0" prefHeight="20.0" prefWidth="320.0" />
+        <ProgressIndicator fx:id="LightProgress" layoutX="613.0" layoutY="192.0" prefHeight="50.0" prefWidth="50.0" progress="0.0" />
+        <ProgressIndicator fx:id="FontProgress" layoutX="613.0" layoutY="278.0" prefHeight="50.0" prefWidth="50.0" progress="0.0" />
+        <Separator layoutX="10.0" layoutY="70.0" prefWidth="780.0" />
+    </children>
+</AnchorPane>
