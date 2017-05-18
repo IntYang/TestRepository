@@ -27,7 +27,7 @@ public class Button {
 	//Method
 	
 	public static void main(String[] args) throws IOException {
-		Button button = new Button(RaspiPin.GPIO_00);
+		Button button = new Button(RaspiPin.GPIO_02);
 		button.setGpioPinListenerDigital(new GpioPinListenerDigital(){
 			@Override
 			public void handleGpioPinDigitalStateChangeEvent(GpioPinDigitalStateChangeEvent event){
