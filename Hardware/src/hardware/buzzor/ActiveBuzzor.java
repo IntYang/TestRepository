@@ -36,7 +36,7 @@ public class ActiveBuzzor {
 	}
 	
 	public static void main(String[] args) throws InterruptedException {
-		ActiveBuzzor buzzor = new ActiveBuzzor(RaspiPin.GPIO_00);
+		ActiveBuzzor buzzor = new ActiveBuzzor(RaspiPin.GPIO_02);
 		for(int i=0;i<5;i++){
 			Thread.sleep(1000);
 			buzzor.on();

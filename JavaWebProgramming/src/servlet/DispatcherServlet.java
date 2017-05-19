@@ -26,7 +26,7 @@ public class DispatcherServlet extends HttpServlet{
     // 기본 생성자로 확인해봦 - 톰캣이 기본 생성자로 생성하기 때문에	
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("service() 실행");
+		System.out.println("DispatcherServlet service() 실행");
 	
 	}
 }

@@ -23,7 +23,7 @@ public class ContextLoaderListener implements ServletContextListener {
 	
 	@Override
 	public void contextDestroyed(ServletContextEvent event) {
-		System.out.println("ContextLoaderListener contextDestroyed() ½ÇÇà");
+		System.out.println("ContextLoaderListener contextDestroyed()");
 	}
 
 	
