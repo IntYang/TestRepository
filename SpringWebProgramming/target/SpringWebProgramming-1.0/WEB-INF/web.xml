@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+ 
+ <!-- ServletContextListener 등록 -->
+ 
+ <listener>
+ 	<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class> <!-- 어플리케이션 초기화 역할 -->
+ </listener>
+ 
+ <context-param>
+ 	<param-name>contextConfigLocation</param-name> <!-- ContextLoaderListener가 사용하는 설정 경로 -->
+ 	<param-value>/WEB-INF/spring/applicationContext.xml</param-value>
+ </context-param>
+ <!-- CharacterEncodingFilter 등록 및 URL 매핑-->
+ <filter>
+  	<filter-name>encodingFilter</filter-name>
+ 	 <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+ 	 <init-param>
+ 	 	<param-name>encoding</param-name>
+ 	 	<param-value>UTF-8</param-value>
+ 	 </init-param>
+  </filter>
+  <filter-mapping>
+  <filter-name>encodingFilter</filter-name>
+  <url-pattern>/*</url-pattern>
+  </filter-mapping>
+ 
+ 
+  <!-- DispatcherServlet 등록 및 URL 매핑 -->
+  <servlet>
+  	<servlet-name>dispatcher</servlet-name>
+  	<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class> <!-- spring 이 제공해주는 이름, 디폴로이 할 때 생성됨 --> 
+  	<init-param>
+  		<param-name>contextConfigLocation</param-name> <!-- 우리가 맘대로 정하진 못하고, 키값 넣어줘야함 --> 
+		<param-value>/WEB-INF/spring/dispatcher-servlet.xml</param-value>  	
+  	</init-param>
+  	<load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>dispatcher</servlet-name>
+  	<url-pattern>/</url-pattern>
+  </servlet-mapping>
+</web-app>
