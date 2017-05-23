@@ -1,25 +1,32 @@
 package com.mycompany.myapp.service;
 
-import com.mycompany.myapp.dao.Exam10Dao;
+import com.mycompany.myapp.dao.Exam10Dao1;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class Exam10ServiceImpl implements Exam10Service {
+public class Exam10Service3Impl implements Exam10Service3 {
 	
+	private Exam10Dao1 exam10Dao;
+	
+	// 객체가 생성될 때 주입(생성자주입)
 	@Autowired
-	private Exam10Dao exam10Dao;
-	
+	public Exam10Service3Impl(Exam10Dao1 exam10Dao){
+		this.exam10Dao = exam10Dao;
+	}
+
 	@Override
 	public void join(){
-		System.out.println("join() 실행");
+		System.out.println(" Exam10Service3Impl join() 실행");
 		exam10Dao.insert();
+	
 	}
 	
 	@Override
 	public void login(){
-		System.out.println("login() 실행");
+		System.out.println(" Exam10Service3Impl login() 실행");
 		exam10Dao.select();
+	
 	}
 }
 // 인터페이스, 구현 객체 왜 따로 만듦?

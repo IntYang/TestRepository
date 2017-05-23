@@ -20,7 +20,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
   
   <!-- 의존성 라이브러리 설정 -->
   <dependencies>
-  
+  	<!-- Servlet 라이브러리 설정 -->
   	<dependency>
     	<groupId>javax.servlet</groupId>
     	<artifactId>javax.servlet-api</artifactId>
@@ -32,19 +32,20 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
     	<artifactId>javax.servlet.jsp-api</artifactId>
     	<version>2.3.1</version>
 	</dependency>
-	
+	<!-- JSTL 라이브러리설정 -->
 	<dependency>
     	<groupId>javax.servlet</groupId>
     	<artifactId>jstl</artifactId>
     	<version>1.2</version>
 	</dependency>
   
-  
+ <!-- Spring WEBMVX 라이브러리 설정 -->
   	<dependency>
   		<groupId>org.springframework</groupId>
   		<artifactId>spring-webmvc</artifactId>
   		<version>4.3.8.RELEASE</version>
   	</dependency>
+  	 <!-- 파일 업로드를 위한 commmons 라이브러리  설정 -->
   	<dependency>
     	<groupId>commons-fileupload</groupId>
     	<artifactId>commons-fileupload</artifactId>
