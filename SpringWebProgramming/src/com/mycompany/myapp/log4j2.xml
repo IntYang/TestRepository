@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Configuration status="WARN"> <!-- log4j 자체 로그의 레벨, 프로젝트의 로그 레벨과 상관 없다 -->
+
+  <!-- 로그를 어디에 출력할 것인가  -->
+  <Appenders> 
+    <Console name="Console" target="SYSTEM_OUT">
+      <PatternLayout pattern="%d{HH:mm:ss} %-5level %logger{2} %M() - %msg%n"/>
+    </Console>
+  </Appenders>
+  
+  <!-- 로깅 대상(클래스)을 설정 : 로그를 출력하는 클래스를 로거라 함 -->
+  <Loggers>
+  <Logger name="com.mycompany.myapp.controller" level="INFO"> <!-- ~~.controller 패키지만 예외로 info레벨까지 출력하게 해주겠다(자식로그) -->
+  	<!-- <AppenderRef ref="Console"/> --> <!-- 이것까지 써주면 두번 로그가 출력되므로 써줄 필요 없다 -->
+  </Logger>
+    <Root level="INFO"> <!-- ~~.controller 패키지 외 나머지는 다 ERROR 레벨까지 출력(부모로그) -->
+      <AppenderRef ref="Console"/><!-- 모든 로그는 콘솔에 출력하겠다 -->
+    </Root>
+  </Loggers>
+</Configuration>
