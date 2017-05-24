@@ -24,6 +24,9 @@ public class Exam10DIController {
 	@Autowired 
 	private Exam10Service5 exam10Service5;
 	
+	@Autowired 
+	private Exam10Service5 exam10Service6;
+	
 	/*
 	@Autowired // setter 대입 :  하는 이유: 추가코드(초기화코드)를 넣을 수 있기 때문
 	public void setExam10Service2(Exam10Service2 exam10Service2) {
@@ -41,6 +44,7 @@ public class Exam10DIController {
 		exam10Service3.join();
 		exam10Service4.join();
 		exam10Service5.join();
+		exam10Service6.join();
 		return "di/exam01";
 	}
 	
@@ -52,6 +56,7 @@ public class Exam10DIController {
 		exam10Service3.login();
 		exam10Service4.login();
 		exam10Service5.login();
+		exam10Service6.login();
 		return "di/exam02";
 	}
 	
