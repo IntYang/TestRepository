@@ -85,5 +85,9 @@
 		<a href ="redirect/list" class="btn btn-primary">게시물 목록</a>
 		<a href ="redirect/write" class="btn btn-primary">게시물 쓰기</a>
 
+		<h4>jdbc</h4>
+		<a href ="jdbc/exam01" class="btn btn-primary">게시물 쓰기</a>
+		<a href ="jdbc/exam02" class="btn btn-primary">게시물 쓰기</a>
+		<a href ="jdbc/exam03" class="btn btn-primary">회원가입</a>
 	</body>
 </html>

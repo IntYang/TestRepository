@@ -11,7 +11,7 @@
   
   <!-- 로깅 대상(클래스)을 설정 : 로그를 출력하는 클래스를 로거라 함 -->
   <Loggers>
-  <Logger name="com.mycompany.myapp.controller" level="info"> <!-- ~~.controller 패키지만 예외로 info레벨까지 출력하게 해주겠다(자식로그) -->
+  <Logger name="com.mycompany.myapp.controller" level="INFO"> <!-- ~~.controller 패키지만 예외로 info레벨까지 출력하게 해주겠다(자식로그) -->
   	<!-- <AppenderRef ref="Console"/> --> <!-- 이것까지 써주면 두번 로그가 출력되므로 써줄 필요 없다 -->
   </Logger>
     <Root level="info"> <!-- ~~.controller 패키지 외 나머지는 다 ERROR 레벨까지 출력(부모로그) -->
