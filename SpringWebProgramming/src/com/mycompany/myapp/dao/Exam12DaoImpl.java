@@ -1,15 +1,20 @@
 package com.mycompany.myapp.dao;
 
+import java.lang.reflect.Member;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.mycompany.myapp.dto.Exam12Board;
 import com.mycompany.myapp.dto.Exam12Member;
@@ -19,7 +24,7 @@ public class Exam12DaoImpl implements Exam12Dao {
 	private static final Logger LOGGER = LoggerFactory.getLogger(Exam12DaoImpl.class);
 
 	@Override
-	public int insert1(Exam12Board board) {
+	public int boardInsert(Exam12Board board) {
 		int bno = -1;
 		Connection conn1 = null;
 
@@ -77,9 +82,174 @@ public class Exam12DaoImpl implements Exam12Dao {
 		
 	}
 
+	@Override
+	public List<Exam12Board> boardSelectAll() {
+		List<Exam12Board> list = new ArrayList<>();
+		
+		Connection conn = null;
+
+		try {
+			// JDBC Driver 클래스 로딩
+			Class.forName("oracle.jdbc.OracleDriver");
+			// 연결 문자열 작성
+			String url1 = "jdbc:oracle:thin:@localhost:1521:orcl";
+			conn = DriverManager.getConnection(url1, "iotuser", "iot12345");
+			LOGGER.info("연결성공");
+
+			// SQL 작성
+			String sql = "select bno,btitle,bwriter,bdate,bhitcount ";
+			sql += "from board ";
+			sql += "order by bno desc";
+					
+
+			// SQL문을 전송하여 실행
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			ResultSet rs = pstmt.executeQuery();
+			while(rs.next()){
+				Exam12Board board = new Exam12Board();
+				board.setBno(rs.getInt("bno"));
+				board.setBtitle(rs.getString("btitle"));
+				board.setBwriter(rs.getString("bwriter"));
+				board.setBdate(rs.getDate("bdate"));
+				board.setBhitcount(rs.getInt("bhitcount"));
+				list.add(board);
+			}
+			rs.close();
+			pstmt.close();
+			
+
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			// 연결끊기
+			try {
+				conn.close();
+				LOGGER.info("연결 끊김");
+			} catch (SQLException e) {}
+		}
+		
+		
+		return list;
+	}
 
 	@Override
-	public String insert2(Exam12Member member) {
+	public List<Exam12Board> boardSelectPage(int pageNo, int rowsPerPage) {
+		List<Exam12Board> list = new ArrayList<>();
+		
+		Connection conn = null;
+
+		try {
+			// JDBC Driver 클래스 로딩
+			Class.forName("oracle.jdbc.OracleDriver");
+			// 연결 문자열 작성
+			String url1 = "jdbc:oracle:thin:@localhost:1521:orcl";
+			conn = DriverManager.getConnection(url1, "iotuser", "iot12345");
+			LOGGER.info("연결성공");
+
+			// SQL 작성
+			String sql = "select * ";
+			sql += "from( ";
+			sql += "  select rownum as r, bno, btitle, bwriter, bdate, bhitcount";
+			sql += "  from( ";
+			sql += "  select bno, btitle, bwriter, bdate, bhitcount from board order by bno desc ";
+			sql += "  ) ";
+			sql += "  where rownum<=? ";
+			sql += ") ";
+			sql += "where r>=? ";
+			
+					
+
+			// SQL문을 전송하여 실행
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, pageNo*rowsPerPage);
+			pstmt.setInt(2, (pageNo-1)*rowsPerPage + 1);
+			ResultSet rs = pstmt.executeQuery();
+			while(rs.next()){
+				Exam12Board board = new Exam12Board();
+				board.setBno(rs.getInt("bno"));
+				board.setBtitle(rs.getString("btitle"));
+				board.setBwriter(rs.getString("bwriter"));
+				board.setBdate(rs.getDate("bdate"));
+				board.setBhitcount(rs.getInt("bhitcount"));
+				list.add(board);
+			}
+			rs.close();
+			pstmt.close();
+			
+
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			// 연결끊기
+			try {
+				conn.close();
+				LOGGER.info("연결 끊김");
+			} catch (SQLException e) {}
+		}
+		
+		
+		return list;
+	}
+	
+	@Override
+	public int boardCountAll() {
+		int count = 0;
+		Connection conn = null;
+
+		try {
+			// JDBC Driver 클래스 로딩
+			Class.forName("oracle.jdbc.OracleDriver");
+			// 연결 문자열 작성
+			String url1 = "jdbc:oracle:thin:@localhost:1521:orcl";
+			conn = DriverManager.getConnection(url1, "iotuser", "iot12345");
+			LOGGER.info("연결성공");
+
+			// SQL 작성
+			String sql = "select count(*) from board ";
+			
+					
+
+			// SQL문을 전송하여 실행
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			ResultSet rs = pstmt.executeQuery();
+			rs.next();
+			count = rs.getInt(1);
+			rs.close();
+			pstmt.close();
+			
+
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			// 연결끊기
+			try {
+				conn.close();
+				LOGGER.info("연결 끊김");
+			} catch (SQLException e) {}
+		}
+		
+		
+		return count;
+		
+		
+	}
+	
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+	@Override
+	public String memberInsert(Exam12Member member) {
 		String mid = "아이디";
 		Connection conn2 = null;
 
@@ -136,48 +306,166 @@ public class Exam12DaoImpl implements Exam12Dao {
 		}
 		return mid;
 	}
-
-	public static void main(String[] args) {
-		/*Exam12DaoImpl test = new Exam12DaoImpl();
-		Exam12Board board = new Exam12Board();
-		board.setBtitle("제목");
-		board.setBcontent("내용");
-		board.setBwriter("헝그리");
-		board.setBpassword("12345");
-		board.setBoriginalfilename("a.png");
-		board.setBsavedfilename("a.png");
-		board.setBfilecontent("image/png");
-	//	test.insert1(board);
-		
-		int bno = test.insert1(board);
-		LOGGER.info("추가된 행의 bno: " + bno);*/
-		
-		
-		Exam12DaoImpl test2 = new Exam12DaoImpl();
-		Exam12Member member = new Exam12Member();
-		
 	
+	
+	@Override
+	public List<Exam12Member> memberSelectPage(int pageNo, int rowsPerPage) {
+		List<Exam12Member> mlist = new ArrayList<>();
 		
-		member.setMname("donggle");
-		member.setMname("스프링 공부요");
-		member.setMpassword("12345");
-		member.setMtel("01053332105");
-		member.setMemail("huntsu@naver.com");
-		member.setMaddress("서울 동작");
-		member.setMoriginalfilename("b.png");
-		member.setMsavedfilename("b.png");
-		member.setMfilecontent("image/png");
-	//	test.insert1(board);
-		
+		Connection conn = null;
 
+		try {
+			// JDBC Driver 클래스 로딩
+			Class.forName("oracle.jdbc.OracleDriver");
+			// 연결 문자열 작성
+			String url1 = "jdbc:oracle:thin:@localhost:1521:orcl";
+			conn = DriverManager.getConnection(url1, "iotuser", "iot12345");
+			LOGGER.info("연결성공");
+
+			// SQL 작성
+			String sql = "select * ";
+			sql += "from( ";
+			sql += "  select rownum as r, mid, mname, mtel, mdate, mage";
+			sql += "  from( ";
+			sql += "  select mid, mname, mtel, mdate, mage from member order by mage desc ";
+			sql += "  ) ";
+			sql += "  where rownum<=? ";
+			sql += ") ";
+			sql += "where r>=? ";
+			
+					
+
+			// SQL문을 전송하여 실행
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, pageNo*rowsPerPage);
+			pstmt.setInt(2, (pageNo-1)*rowsPerPage + 1);
+			ResultSet rs = pstmt.executeQuery();
+			while(rs.next()){
+				Exam12Member member = new Exam12Member();
+				member.setMid(rs.getString("mid"));
+				member.setMname(rs.getString("mname"));
+				member.setMtel(rs.getString("mtel"));
+				member.setMdate(rs.getDate("mdate"));
+				member.setMage(rs.getInt("mage"));
+				mlist.add(member);
+			}
+			rs.close();
+			pstmt.close();
+			
+
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			// 연결끊기
+			try {
+				conn.close();
+				LOGGER.info("연결 끊김");
+			} catch (SQLException e) {}
+		}
 		
-		String mid = test2.insert2(member);
-		LOGGER.info("추가된 행의 mid: " + mid);
+		
+		return mlist;
+	}
+	
+
+	@Override
+	public int memberCountAll() {
+		int count = 0;
+		Connection conn = null;
+
+		try {
+			// JDBC Driver 클래스 로딩
+			Class.forName("oracle.jdbc.OracleDriver");
+			// 연결 문자열 작성
+			String url1 = "jdbc:oracle:thin:@localhost:1521:orcl";
+			conn = DriverManager.getConnection(url1, "iotuser", "iot12345");
+			LOGGER.info("연결성공");
+
+			// SQL 작성
+			String sql = "select count(*) from member ";
+			
+					
+
+			// SQL문을 전송하여 실행
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			ResultSet rs = pstmt.executeQuery();
+			rs.next();
+			count = rs.getInt(1);
+			rs.close();
+			pstmt.close();
+			
+
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			// 연결끊기
+			try {
+				conn.close();
+				LOGGER.info("연결 끊김");
+			} catch (SQLException e) {}
+		}
+		
+		
+		return count;
 		
 	}
 
 
+	
+///////////////////////////////////////////////////////////////////////////////////////////////////////	
+	public static void main(String[] args) {
+		
+		/*
+		Exam12DaoImpl test = new Exam12DaoImpl();
+		List<Exam12Board> list = test.boardSelectPage(2, 10);
+		for(Exam12Board board:list){
+			LOGGER.info(board.getBtitle());
+		}
+		*/
+
+		
+		
+		Exam12DaoImpl test = new Exam12DaoImpl();
+		
+		// 100개 데이터를 멤버에 추가
+		/*
+		for(int i=1;i<=100;i++){
+			List<Exam12Member> mlist = new ArrayList<>();
+			Exam12Member member = new Exam12Member();
+			member.setMname("멤버" + i);
+			member.setMid("id" + i);
+			member.setMpassword("12345");
+			member.setMdate(member.getMdate()); // 날짜 받는거
+			member.setMtel("번호"+ i);
+			member.setMage(i);
+			member.setMaddress("주소" + i);
+			member.setMoriginalfilename("a"+i+".png");
+			member.setMsavedfilename("b"+i+".png");
+			member.setMfilecontent("image/png");
+			test.memberInsert(member);
+			//mlist.add(member);
+			LOGGER.info(member.getMid());
+		}
+		
+		*/
+		
+		// 멤버의 페이지 셀렉터
+		List<Exam12Member> mlist = test.memberSelectPage(2, 10);
+		for(Exam12Member member:mlist){
+			LOGGER.info(member.getMid());
+		}
+		
+
+		
+	}
 
 	
-
 }
