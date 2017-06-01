@@ -83,7 +83,7 @@ public class Exam12JdbcController {
 		//LOGGER.info(realPath);
 		// 서비스 객체에 요청 처리 요청
 		service.boardWrite(board);
-		return "redirect:/";
+		return "redirect:/jdbc/exam05";
 	}
 	
 	
@@ -157,6 +157,66 @@ public class Exam12JdbcController {
 		// View 이름 리턴 -> jsp에서 페이저 만들 때 사용한다.
 		return "jdbc/exam05";
 	}
+	
+	@RequestMapping("/jdbc/exam05Detail")
+	public String exam05Detail(int bno, Model model){
+		Exam12Board board = service.getBoard(bno);
+		model.addAttribute("board", board);
+		
+		// View 이름 리턴 -> jsp에서 페이저 만들 때 사용한다.
+		return "jdbc/exam05Detail";
+	}
+	
+	@RequestMapping("/jdbc/exam05CheckBpassword")
+	public String exam05CheckBpassword(int bno, String bpassword,Model model){
+		String result = service.boardCheckBpassword(bno, bpassword);
+		model.addAttribute("result", result);
+		
+		// View 이름 리턴 -> jsp에서 페이저 만들 때 사용한다.
+		return "jdbc/exam05CheckBpassword";
+	}
+	
+
+	@RequestMapping(value="/jdbc/exam05Update", method = RequestMethod.GET)
+	public String exam05UpdateGet(int bno, Model model){
+		Exam12Board board = service.getBoard(bno);
+		model.addAttribute("board", board);
+		// View 이름 리턴 -> jsp에서 페이저 만들 때 사용한다.
+		return "jdbc/exam05Update";
+		
+	}
+	
+	@RequestMapping(value="/jdbc/exam05Update", method = RequestMethod.POST)
+	public String exam05UpdatePost(Exam12Board board) throws Exception{ // exam05Update의 수정될 사항들 매개변수로 받아야 or 커멘드 객체로 통째로
+		// 첨부파일이 변경되었는지 검사
+		LOGGER.info(String.valueOf(board.getBattach().isEmpty()));
+		if(!board.getBattach().isEmpty()){
+			
+			// 첨부 파일에 대한 정보를 컬럼값으로 설정
+			board.setBoriginalfilename(board.getBattach().getOriginalFilename());
+			board.setBfilecontent(board.getBattach().getContentType());
+			String fileName = new Date().getTime() +"-" +board.getBoriginalfilename();
+			board.setBsavedfilename(fileName);
+			
+			// 첨부파일을 서버 로컬 시스템에 저장
+			String realPath = servletContext.getRealPath("/WEB-INF/upload/");
+			File file = new File(realPath + fileName);
+			board.getBattach().transferTo(file);
+			
+		}
+		
+		// 게시물 수정 처리
+		service.boardUpdate(board);
+		return "redirect:/jdbc/exam05Detail?bno=" + board.getBno();
+	}
+	
+	@RequestMapping("/jdbc/exam05Delete")
+	public String exam05Delete(int bno){
+		service.boardDelete(bno);
+		return "redirect:/jdbc/exam05";
+	}
+	
+
 	
 	@RequestMapping("/jdbc/exam06")
 	public String exam06(@RequestParam(defaultValue="1") int pageNo, Model model){

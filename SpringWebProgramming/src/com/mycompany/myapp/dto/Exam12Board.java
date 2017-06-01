@@ -14,10 +14,10 @@ public class Exam12Board {
 	private int bhitcount;
 	private String boriginalfilename;
 	private String bsavedfilename;
-	
-
 	private String bfilecontent;
 	private MultipartFile battach;
+	
+	
 	
 	public MultipartFile getBattach() {
 		return battach;

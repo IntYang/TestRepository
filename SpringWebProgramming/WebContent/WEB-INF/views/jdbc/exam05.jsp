@@ -15,7 +15,7 @@
 		<h4>게시물 목록</h4>
 		<hr/>
 		
-		<table class="table table-bordered">
+		<table class="table table-bordered" style="margin-top:20px;width:700px;text-align:center">
 			<tr class="success">
 				<td>번호</td>
 				<td>제목</td>
@@ -26,7 +26,7 @@
 			<c:forEach var="b" items="${list}">
 				<tr>
 					<td>${b.bno}</td>
-					<td>${b.btitle}</td>
+					<td><a href="exam05Detail?bno=${b.bno}">${b.btitle}</a></td>
 					<td>${b.bwriter}</td>
 					<td>${b.bdate}</td>
 					<td>${b.bhitcount}</td>
@@ -57,5 +57,9 @@
 			
 			<a href="exam05?pageNo=${totalPageNo}">[맨끝]</a>
 		</div>
+		
+			<div style="margin-top: 10px;width:700px;text-align:right;">
+				<a href="exam02" class="btn btn-success">글쓰기</a>
+			</div>
 	</body>
 </html>

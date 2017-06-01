@@ -15,7 +15,7 @@
 		<h4>게시물 쓰기</h4>
 		<hr/>
 		
-		<form method="post" action="exam02" style="padding: 0px 20px" enctype="multipart/form-data">
+		<form method="post" style="padding: 0px 20px" enctype="multipart/form-data">
 			<div class="form-group">
 				<div class="input-group">
 					<span class="input-group-addon">

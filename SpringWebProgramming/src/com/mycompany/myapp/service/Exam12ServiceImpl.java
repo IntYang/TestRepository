@@ -28,21 +28,56 @@ public class Exam12ServiceImpl implements Exam12Service{
 		int totalRows = dao.boardCountAll();
 		return totalRows;
 	}
+	
+	
+	
+	@Override
+	public List<Exam12Board> boardListPage(int pageNo, int rowsPerPage) {
+		List<Exam12Board> list = dao.boardSelectPage(pageNo, rowsPerPage);
+		return list;
+	}
+	
+	@Override
+	public Exam12Board getBoard(int bno){
+		Exam12Board board = dao.boardSelectByBno(bno);
+		board.setBhitcount(board.getBhitcount()+1);
+		dao.boardUpdateBhitcount(bno, board.getBhitcount());
+		return board;
+	}
+	
+	
+	@Override
+	public String boardCheckBpassword(int bno, String bpassword) {
+		
+		String result = "fail";
+		Exam12Board board = dao.boardSelectByBno(bno);
+		if(board.getBpassword().equals(bpassword)){
+			result = "success";
+		}
+		
+		return result;
+	}
 
+	@Override
+	public void boardUpdate(Exam12Board board) {
+		dao.boardUpdate(board);
+		
+	}
+	
+	
+	@Override
+	public void boardDelete(int bno) {
+		dao.boardDelete(bno);
+	}
+	
+	
 ///////////////////////////////////////////////////////////////////////////////////////////
 	
 	@Override
 	public void memberJoin(Exam12Member member) {
 		dao.memberInsert(member);
 	}
-
-	@Override
-	public List<Exam12Board> boardListPage(int pageNo, int rowsPerPage) {
-		List<Exam12Board> list = dao.boardSelectPage(pageNo, rowsPerPage);
-		return list;
-	}
-	//////////////////////////////////////////////////////////////////////////////
-
+	
 	@Override
 	public List<Exam12Member> memberListPage(int pageNo, int rowsPerPage) {
 		List<Exam12Member> mlist = dao.memberSelectPage(pageNo, rowsPerPage);
@@ -54,5 +89,11 @@ public class Exam12ServiceImpl implements Exam12Service{
 		int totalRows = dao.memberCountAll();
 		return totalRows;
 	}
+
+
+	//////////////////////////////////////////////////////////////////////////////
+
+
 	
+
 }
