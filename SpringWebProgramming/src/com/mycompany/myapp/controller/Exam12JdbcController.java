@@ -209,14 +209,14 @@ public class Exam12JdbcController {
 		service.boardUpdate(board);
 		return "redirect:/jdbc/exam05Detail?bno=" + board.getBno();
 	}
-	
 	@RequestMapping("/jdbc/exam05Delete")
 	public String exam05Delete(int bno){
 		service.boardDelete(bno);
 		return "redirect:/jdbc/exam05";
 	}
-	
 
+	
+	
 	
 	@RequestMapping("/jdbc/exam06")
 	public String exam06(@RequestParam(defaultValue="1") int pageNo, Model model){
@@ -255,11 +255,62 @@ public class Exam12JdbcController {
 		return "jdbc/exam06";
 	}
 	
+	@RequestMapping("/jdbc/exam06Detail")
+	public String exam06Detail(String mid, Model model){
+		Exam12Member member = service.getMember(mid);
+		model.addAttribute("member", member);
+		
+		// View 이름 리턴 -> jsp에서 페이저 만들 때 사용한다.
+		return "jdbc/exam06Detail";
+	}
 	
+	@RequestMapping("/jdbc/exam06CheckMpassword")
+	public String exam06CheckMpassword(String mid, String mpassword,Model model){
+		String result = service.memberCheckMpassword(mid, mpassword);
+		model.addAttribute("result", result);
+		
+		// View 이름 리턴 -> jsp에서 페이저 만들 때 사용한다.
+		return "jdbc/exam06CheckMpassword";
+	}
 	
+	@RequestMapping(value="/jdbc/exam06Update", method = RequestMethod.GET)
+	public String exam06UpdateGet(String mid, Model model){
+		Exam12Member member = service.getMember(mid);
+		model.addAttribute("member", member);
+		// View 이름 리턴 -> jsp에서 페이저 만들 때 사용한다.
+		return "jdbc/exam06Update";
+		
+	}
 	
+	@RequestMapping(value="/jdbc/exam06Update", method = RequestMethod.POST)
+	public String exam06UpdatePost(Exam12Member member) throws Exception{ // exam05Update의 수정될 사항들 매개변수로 받아야 or 커멘드 객체로 통째로
+		// 첨부파일이 변경되었는지 검사
+		LOGGER.info(String.valueOf(member.getMattach().isEmpty()));
+		if(!member.getMattach().isEmpty()){
+			
+			// 첨부 파일에 대한 정보를 컬럼값으로 설정
+			member.setMoriginalfilename(member.getMattach().getOriginalFilename());
+			member.setMfilecontent(member.getMattach().getContentType());
+			String fileName = new Date().getTime() +"-" +member.getMoriginalfilename();
+			member.setMsavedfilename(fileName);
+			
+			// 첨부파일을 서버 로컬 시스템에 저장
+			String realPath = servletContext.getRealPath("/WEB-INF/upload/");
+			File file = new File(realPath + fileName);
+			member.getMattach().transferTo(file);
+			
+		}
+		
+		// 게시물 수정 처리
+		service.memberUpdate(member);
+		return "redirect:/jdbc/exam06Detail?mid=" + member.getMid();
+	}
 	
-	
+	@RequestMapping("/jdbc/exam06Delete")
+	public String exam06Delete(String mid){
+		service.memberDelete(mid);
+		return "redirect:/jdbc/exam06";
+	}
 	
 	
 }

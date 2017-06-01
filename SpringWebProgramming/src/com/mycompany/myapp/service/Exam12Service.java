@@ -18,7 +18,8 @@ public interface Exam12Service {
 	public void memberJoin(Exam12Member member);
 	public List<Exam12Member> memberListPage(int pageNo, int rowsPerPage);
 	public int memberTotalRows();
-	
-	
-	
+	public Exam12Member getMember(String mid);
+	public String memberCheckMpassword(String mid, String mpassword);
+	public void memberUpdate(Exam12Member member);
+	public void memberDelete(String mid);
 }

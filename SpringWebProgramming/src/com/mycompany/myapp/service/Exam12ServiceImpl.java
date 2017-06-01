@@ -90,6 +90,35 @@ public class Exam12ServiceImpl implements Exam12Service{
 		return totalRows;
 	}
 
+	@Override
+	public Exam12Member getMember(String mid) {
+		Exam12Member member = dao.memberSelectByMid(mid);
+		//member.setBhitcount(board.getBhitcount()+1);
+		//dao.boardUpdateBhitcount(bno, board.getBhitcount());
+		return member;
+	}
+	
+	@Override
+	public String memberCheckMpassword(String mid, String mpassword) {
+		String result = "fail";
+		Exam12Member member = dao.memberSelectByMid(mid);
+		if(member.getMpassword().equals(mpassword)){
+			result = "success";
+		}
+		
+		return result;
+	}
+	
+	@Override
+	public void memberUpdate(Exam12Member member) {
+		dao.memberUpdate(member);
+	}
+	
+	@Override
+	public void memberDelete(String mid) {
+		// TODO Auto-generated method stub
+		dao.memberDelete(mid);
+	}
 
 	//////////////////////////////////////////////////////////////////////////////
 

@@ -14,8 +14,8 @@
 	<body>
 		<h4>게시물 목록</h4>
 		<hr/>
-		
-		<table class="table table-bordered">
+
+			<table class="table table-bordered" style="margin-top:20px;width:700px;text-align:center">
 			<tr class="success">
 				<td>아이디</td>
 				<td>이름</td>
@@ -26,13 +26,15 @@
 			<c:forEach var="m" items="${mlist}">
 				<tr>
 					<td>${m.mid}</td>
-					<td>${m.mname}</td>
+					<td><a href="exam06Detail?mid=${m.mid}">${m.mname}</a></td>
 					<td>${m.mtel}</td>
 					<td>${m.mdate}</td>
 					<td>${m.mage}</td>
 				</tr>
 			</c:forEach>
-		</table>
+			</table>
+		
+		
 		
 		<div style="margin-top: 20px;width:700px;text-align:center;">
 			<a href="exam06?pageNo=1">[처음]</a>

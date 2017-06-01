@@ -624,7 +624,169 @@ public class Exam12DaoImpl implements Exam12Dao {
 		
 	}
 
+	
+	@Override
+	public Exam12Member memberSelectByMid(String mid) {
+		Exam12Member member = null;
+		Connection conn = null;
 
+		try {
+			// JDBC Driver 클래스 로딩
+			Class.forName("oracle.jdbc.OracleDriver");
+			// 연결 문자열 작성
+			String url1 = "jdbc:oracle:thin:@localhost:1521:orcl";
+			conn = DriverManager.getConnection(url1, "iotuser", "iot12345");
+			LOGGER.info("연결성공");
+
+			// SQL 작성
+			String sql = "select * from member where mid=? ";
+			
+
+			// SQL문을 전송하여 실행
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, mid);
+			ResultSet rs = pstmt.executeQuery();
+			if(rs.next()){
+				member = new Exam12Member();
+				member.setMid(rs.getString("mid"));
+				member.setMname(rs.getString("mname"));
+				member.setMpassword(rs.getString("mpassword"));
+				member.setMdate(rs.getDate("mdate"));
+				member.setMtel(rs.getString("mtel"));
+				member.setMemail(rs.getString("memail"));
+				member.setMage(rs.getInt("mage"));
+				member.setMaddress(rs.getString("maddress"));
+				member.setMoriginalfilename(rs.getString("moriginalfilename"));
+				member.setMsavedfilename(rs.getString("msavedfilename"));
+				member.setMfilecontent(rs.getString("mfilecontent"));
+				
+			}
+			rs.close();
+			pstmt.close();
+			
+
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			// 연결끊기
+			try {
+				conn.close();
+				LOGGER.info("연결 끊김");
+			} catch (SQLException e) {}
+		}
+		
+		
+		return member;
+	}
+	
+	@Override
+	public void memberUpdate(Exam12Member member) {
+		Connection conn = null;
+
+		try {
+			// JDBC Driver 클래스 로딩
+			Class.forName("oracle.jdbc.OracleDriver");
+			// 연결 문자열 작성
+			String url1 = "jdbc:oracle:thin:@localhost:1521:orcl";
+			conn = DriverManager.getConnection(url1, "iotuser", "iot12345");
+			LOGGER.info("연결성공");
+
+			// SQL 작성
+			String sql;
+			
+			if(member.getMoriginalfilename() != null){
+				sql= "update member set mname=?,mpassword=?,mdate=sysdate,mtel=?,memail=?,mage=?,maddress=?,moriginalfilename=?,msavedfilename=?,mfilecontent=? where mid=? ";
+					
+			}else{
+				sql= "update member set mname=?,mpassword=?,mdate=sysdate,mtel=?,memail=?,mage=?,maddress=? where mid=? ";
+				}
+			
+			
+					
+
+			// SQL문을 전송하여 실행
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, member.getMname());
+			pstmt.setString(2, member.getMpassword());
+			pstmt.setString(3, member.getMtel());
+			pstmt.setString(4, member.getMemail());
+			pstmt.setInt(5, member.getMage());
+			pstmt.setString(6, member.getMaddress());
+			if(member.getMoriginalfilename()!=null)
+			{
+				pstmt.setString(7, member.getMoriginalfilename());
+				pstmt.setString(8, member.getMsavedfilename());
+				pstmt.setString(9, member.getMfilecontent());
+				pstmt.setString(10, member.getMid());
+			}else{
+				pstmt.setString(7, member.getMid());
+			}
+			
+			pstmt.executeUpdate();
+			
+			pstmt.close();
+			
+
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			// 연결끊기
+			try {
+				conn.close();
+				LOGGER.info("연결 끊김");
+			} catch (SQLException e) {}
+		}
+		
+	}
+	
+	@Override
+	public void memberDelete(String mid) {
+		Connection conn = null;
+
+		try {
+			// JDBC Driver 클래스 로딩
+			Class.forName("oracle.jdbc.OracleDriver");
+			// 연결 문자열 작성
+			String url1 = "jdbc:oracle:thin:@localhost:1521:orcl";
+			conn = DriverManager.getConnection(url1, "iotuser", "iot12345");
+			LOGGER.info("연결성공");
+
+			// SQL 작성
+			String sql= "delete from member where mid=? ";
+			
+			
+					
+
+			// SQL문을 전송하여 실행
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+	
+			pstmt.setString(1, mid);
+			pstmt.executeUpdate();
+			pstmt.close();
+			
+
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			// 연결끊기
+			try {
+				conn.close();
+				LOGGER.info("연결 끊김");
+			} catch (SQLException e) {}
+		}
+	}
 	
 ///////////////////////////////////////////////////////////////////////////////////////////////////////	
 	public static void main(String[] args) {
