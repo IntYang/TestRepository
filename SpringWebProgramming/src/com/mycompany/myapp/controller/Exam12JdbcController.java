@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 
+import javax.annotation.Resource;
 import javax.servlet.ServletContext;
 
 import org.slf4j.Logger;
@@ -26,7 +27,8 @@ public class Exam12JdbcController {
 	
 	private static final Logger LOGGER = LoggerFactory.getLogger(Exam12JdbcController.class);
 	
-	@Autowired
+	//@Autowired
+	@Resource(name="exam12ServiceImpl2")
 	private Exam12Service service;
 	
 	@Autowired
