@@ -11,13 +11,11 @@ public interface GalleryService {
 	
 	public void galleryWrite(Gallery gallery);
 	public List<Gallery> galleryListAll();
-	
 	public List<Gallery> galleryListPage(int pageNo, int rowsPerPage);
 	public int galleryTotalRows();
-	
 	public Gallery getGallery(int gno);
 	public void galleryUpdate(Gallery gallery);
-	//public void galleryDelete(int gno);
+	public void galleryDelete(int gno);
 	
 	
 	

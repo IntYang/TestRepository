@@ -34,29 +34,35 @@
 			<div class="form-group">
 				<div class="input-group">
 					<span class="input-group-addon">
-						<span class="glyphicon glyphicon-user"></span>
+						<span class="glyphicon glyphicon-tag"></span>
 					</span>
-					<input type="text" class="form-control" placeholder="제목" value="${gallery.gno}"name="title" disabled/>
+					<input type="text" class="form-control" placeholder="제목" value="${gallery.title}"name="title" disabled/>
 				</div>
 			</div>
 		
-			
-			<div class="form-group">
+		<div class="form-group">
 				<div class="input-group">
 					<span class="input-group-addon">
-						<span class="glyphicon glyphicon-lock"></span>
+						<span class="glyphicon glyphicon-camera"></span>
 					</span>
 					
-					<a class="form-control"></a>
+					<a class="form-control" href="#">${gallery.originalfilename}</a>
 				</div>
 			</div>
 			
 	
 			
 			<!--<a href="exam06" class="btn btn-success">목록</a>   -->
-			<input type="button" class="btn btn-warning" value="수정"/>
-			<input type="button" class="btn btn-danger" value="삭제"/>
 			
+			<a href="gallery">
+				<input type="button" class="btn btn-success" value="목록"/>
+			</a>
+			<a href="galleryUpdate?gno=${gallery.gno}">
+				<input type="button" class="btn btn-warning" value="수정"/>
+			</a>
+			<a href="galleryDelete?gno=${gallery.gno}">
+			<input type="button" class="btn btn-danger" value="삭제"/>
+			</a>
 			<!-- 
 			<button>버튼</button>                // submit 기능
 			<input type="button" value="버튼"/> 

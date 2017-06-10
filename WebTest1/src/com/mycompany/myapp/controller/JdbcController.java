@@ -20,10 +20,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+
 import com.mycompany.myapp.dto.Gallery;
 import com.mycompany.myapp.service.GalleryService;
 
 @Controller
+
 public class JdbcController {
 	@Autowired
 	private GalleryService service;
@@ -32,12 +34,68 @@ public class JdbcController {
 	private ServletContext servletContext;
 	
 	@RequestMapping("/html/gallery")
-	public String gallery(Model model){
-		List<Gallery> list = service.galleryListAll();
+	public String gallery(@RequestParam(defaultValue="1") int pageNo, Model model){
+		
+		// 한 페이지를 구성하는 행 수
+				int rowsPerPage = 6; // 고정값(개발자가 정함
+				// 한 그룹을 구성하는 페이지 수
+				int pagesPerGroup = 5; // 고정값
+				// 총 행수
+				int totalRows = 100;
+				// 전체 페이지 수
+				int totalPageNo = (totalRows/rowsPerPage) + ((totalRows % rowsPerPage !=0) ? 1:0);
+				// 전체 그룹 수
+				int totalGroupNo = (totalPageNo/pagesPerGroup) + ((totalPageNo % pagesPerGroup != 0)?1:0);
+				// 현재 그룹 번호
+				int groupNo = (pageNo-1)/pagesPerGroup + 1;
+				// 현재 그룹의 시작 페이지 번호
+				int startPageNo = (groupNo-1)*pagesPerGroup + 1;
+				// 현재 그룹의 끝 페이지 번호
+				int endPageNo = startPageNo + (pagesPerGroup-1);
+				if(groupNo == totalGroupNo){endPageNo = totalPageNo;}
+		
+		
+		
+		List<Gallery> list = service.galleryListPage(pageNo,rowsPerPage);
 		model.addAttribute("list", list);
+		model.addAttribute("pagesPerGroup", pagesPerGroup);
+		model.addAttribute("totalPageNo", totalPageNo);
+		model.addAttribute("totalGroupNo", totalGroupNo);
+		model.addAttribute("groupNo", groupNo);
+		model.addAttribute("startPageNo",startPageNo);
+		model.addAttribute("endPageNo",endPageNo);
+		model.addAttribute("pageNo", pageNo);
+		
+		
+		
+		
 		return "html/gallery";
 	}
 	
+	@RequestMapping(value="/html/galleryWrite", method = RequestMethod.GET)
+	public String galleryWriteGet(){
+		return "html/galleryWrite";
+	}
+	
+
+	
+	@RequestMapping(value = "/html/galleryrWrite", method = RequestMethod.POST)
+	public String galleryWritePost(Gallery gallery) throws IllegalStateException, IOException {
+		
+			gallery.setOriginalfilename(gallery.getattach().getOriginalFilename());
+			String originalFileName = gallery.getOriginalfilename();
+
+			String realPath = servletContext.getRealPath("/WEB-INF/upload/");
+			String fileName = new Date().getTime() + "-" + originalFileName;
+
+			File file = new File(realPath + fileName);
+			gallery.getattach().transferTo(file);
+			gallery.setSavedfilename(fileName);
+			gallery.setFilepath("/WEB-INF/upload/" + fileName);
+		
+		service.galleryWrite(gallery);
+		return "redirect:gallery";
+	}
 	
 	@RequestMapping("/html/galleryDetail")
 	public String galleryDetail(int gno, Model model){
@@ -47,52 +105,28 @@ public class JdbcController {
 		// View 이름 리턴 -> jsp에서 페이저 만들 때 사용한다.
 		return "html/galleryDetail";
 	}
+
 	
-	
-	
-	
-	/*
-	
-	@RequestMapping(value="/html/galleryDetail", method = RequestMethod.GET)
-	public String galleryDetailGet(){
-		
-		// View 이름 리턴 -> jsp에서 페이저 만들 때 사용한다.
-		return "/html/galleryDetail";
-	}
-	
-	@RequestMapping(value="/html/galleryDetail", method = RequestMethod.POST)
-	public String galleryDetailPost(Gallery gallery) throws Exception{
-		
-		Gallery gallery = service.getGallery(gno);
-		model.addAttribute("gallery", gallery);
-		return "/html/galleryDetail";
-	}
-	
-	
-	
-	/*
-	
-	@RequestMapping(value="/html/write", method = RequestMethod.GET)
-	public String writeGET(int gno, Model model){
+
+	@RequestMapping(value="/html/galleryUpdate", method = RequestMethod.GET)
+	public String galleryUpdateGet(int gno, Model model){
 		Gallery gallery = service.getGallery(gno);
 		model.addAttribute("gallery", gallery);
 		// View 이름 리턴 -> jsp에서 페이저 만들 때 사용한다.
-		return "html/write";
+		return "html/galleryUpdate";
 		
 	}
 	
-	*/
-	/*
-	@RequestMapping(value="/html/write", method = RequestMethod.POST)
-	public String writePost(Gallery gallery) throws Exception{ // exam05Update의 수정될 사항들 매개변수로 받아야 or 커멘드 객체로 통째로
+	@RequestMapping(value="/html/galleryUpdate", method = RequestMethod.POST)
+	public String galleryUpdatePost(Gallery gallery) throws Exception{ // exam05Update의 수정될 사항들 매개변수로 받아야 or 커멘드 객체로 통째로
 		// 첨부파일이 변경되었는지 검사
-	
+		
 		if(!gallery.getattach().isEmpty()){
 			
 			// 첨부 파일에 대한 정보를 컬럼값으로 설정
 			gallery.setOriginalfilename(gallery.getattach().getOriginalFilename());
 			gallery.setFilecontent(gallery.getattach().getContentType());
-			String fileName = new Date().getTime() +"-" + gallery.getOriginalfilename();
+			String fileName = new Date().getTime() +"-" +gallery.getOriginalfilename();
 			gallery.setSavedfilename(fileName);
 			
 			// 첨부파일을 서버 로컬 시스템에 저장
@@ -104,9 +138,15 @@ public class JdbcController {
 		
 		// 게시물 수정 처리
 		service.galleryUpdate(gallery);
-		return "/html/write";
+		return "redirect:galleryDetail?gno="+gallery.getGno();
 	}
-	*/
+	
+	@RequestMapping("/html/galleryDelete")
+	public String galleryDelete(int gno){
+		service.galleryDelete(gno);
+		return "redirect:gallery";
+	}
+	
 	
 	@RequestMapping("/html/file/upload")
 	public void fileView(HttpServletResponse response, @RequestHeader("User-Agent") String userAgent, int gno)

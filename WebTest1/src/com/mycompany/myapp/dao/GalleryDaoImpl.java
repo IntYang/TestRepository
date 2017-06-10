@@ -50,6 +50,7 @@ public class GalleryDaoImpl implements GalleryDao{
 			pstmt.setString(5, gallery.getFilepath());
 			
 			pstmt.executeUpdate(); // sql 문을 실행하라
+			
 			ResultSet rs = pstmt.getGeneratedKeys();
 			rs.next();
 			 gno = rs.getInt(1); // 첫번째 컬럼의 정수값
@@ -172,6 +173,8 @@ public class GalleryDaoImpl implements GalleryDao{
 
 	@Override
 	public void galleryUpdate(Gallery gallery) {
+		
+	
 		Connection conn = null;
 
 		try {
@@ -184,8 +187,8 @@ public class GalleryDaoImpl implements GalleryDao{
 			// SQL 작성
 			String sql;
 			
-			if(gallery.getOriginalfilename() != null){
-				sql= "update gallery set title=?,originalfilename?,savedfilename=?,filecontent=?,filepath=? where gno=? ";
+			if(gallery.getOriginalfilename()!= null){
+				sql= "update gallery set title=?,originalfilename=?,savedfilename=?,filecontent=?,filepath=? where gno=? ";
 					
 			}else{
 				sql= "update gallery set title=? where gno=? ";
@@ -204,6 +207,7 @@ public class GalleryDaoImpl implements GalleryDao{
 				pstmt.setString(3, gallery.getSavedfilename());
 				pstmt.setString(4, gallery.getFilecontent());
 				pstmt.setString(5, gallery.getFilepath());
+				pstmt.setInt(6, gallery.getGno());
 				
 			}else{
 				pstmt.setInt(2, gallery.getGno());
@@ -230,49 +234,8 @@ public class GalleryDaoImpl implements GalleryDao{
 		
 	}
 	
+	
 	/*
-	 * @Override
-	public void boardDelete(int bno) {
-		Connection conn = null;
-
-		try {
-			// JDBC Driver 클래스 로딩
-			Class.forName("oracle.jdbc.OracleDriver");
-			// 연결 문자열 작성
-			String url1 = "jdbc:oracle:thin:@localhost:1521:orcl";
-			conn = DriverManager.getConnection(url1, "iotuser", "iot12345");
-			LOGGER.info("연결성공");
-
-			// SQL 작성
-			String sql= "delete from board where bno=? ";
-			
-			
-					
-
-			// SQL문을 전송하여 실행
-			PreparedStatement pstmt = conn.prepareStatement(sql);
-	
-			pstmt.setInt(1, bno);
-			pstmt.executeUpdate();
-			pstmt.close();
-			
-
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-			// 연결끊기
-			try {
-				conn.close();
-				LOGGER.info("연결 끊김");
-			} catch (SQLException e) {}
-		}
-	}
-	 * */
-	
 	public static void main(String[] args) {
 		
 		GalleryDaoImpl test = new GalleryDaoImpl();
@@ -292,7 +255,7 @@ public class GalleryDaoImpl implements GalleryDao{
 		}
 	
 	}
-
+*/
 	@Override
 	public List<Gallery> gallerySelectPage(int pageNo, int rowsPerPage) {
 		List<Gallery> list = new ArrayList<>();
@@ -311,7 +274,7 @@ public class GalleryDaoImpl implements GalleryDao{
 			sql += "from( ";
 			sql += "  select rownum as r, gno, title";
 			sql += "  from( ";
-			sql += "  select gno, title from gallery order by gno desc ";
+			sql += "  select gno, title from gallery order by gno ";
 			sql += "  ) ";
 			sql += "  where rownum<=? ";
 			sql += ") ";
@@ -396,6 +359,45 @@ public class GalleryDaoImpl implements GalleryDao{
 		
 		
 		return count;
+	}
+	
+	@Override
+	public void galleryDelete(int gno) {
+		Connection conn = null;
+
+		try {
+			// JDBC Driver 클래스 로딩
+			Class.forName("oracle.jdbc.OracleDriver");
+			// 연결 문자열 작성
+			String url = "jdbc:oracle:thin:@106.253.56.126:1521:orcl";
+			conn = DriverManager.getConnection(url, "user01", "java12345");
+
+			// SQL 작성
+			String sql= "delete from gallery where gno=? ";
+			
+			
+					
+
+			// SQL문을 전송하여 실행
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+	
+			pstmt.setInt(1, gno);
+			pstmt.executeUpdate();
+			pstmt.close();
+			
+
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			// 연결끊기
+			try {
+				conn.close();
+			} catch (SQLException e) {}
+		}
 	}
 	
 

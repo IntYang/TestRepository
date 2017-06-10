@@ -54,17 +54,11 @@ public class GalleryServiceImpl implements GalleryService{
 
 
 
-	
-
-
-	
-	/*
-	 * @Override
+	@Override
 	public void galleryDelete(int gno) {
 		dao.galleryDelete(gno);
 		
 	}
-	 * 
-	 * */
+	 
 
 }

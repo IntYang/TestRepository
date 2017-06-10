@@ -11,6 +11,6 @@ public interface GalleryDao {
 	public int galleryCountAll();
 	public Gallery gallerySelectByGno(int gno);
 	public void galleryUpdate(Gallery gallery);
-	//public void galleryDelete(int gno);
+	public void galleryDelete(int gno);
 
 }

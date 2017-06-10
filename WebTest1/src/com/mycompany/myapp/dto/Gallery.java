@@ -54,8 +54,8 @@ public class Gallery {
 	public MultipartFile getattach() {
 		return attach;
 	}
-	public void setMattach(MultipartFile mattach) {
-		this.attach = mattach;
+	public void setattach(MultipartFile attach) {
+		this.attach = attach;
 	}
 
 
