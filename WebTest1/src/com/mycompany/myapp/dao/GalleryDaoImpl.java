@@ -30,10 +30,11 @@ public class GalleryDaoImpl implements GalleryDao{
 
 			// SQL 작성
 			String sql = "insert into gallery ";
-			sql += "(gno,title,originalfilename,savedfilename,filecontent,filepath)";
-			sql += "values";
+			sql += "(gno,title,originalfilename,savedfilename,filecontent,filepath) ";
+			//sql += "(gno,title,originalfilename,savedfilename,filecontent) ";
+			sql += "values ";
 			sql += "(gallery_gno_seq.nextval,?,?,?,?,?)"; // 매개변수화된 sql문
-
+			//sql += "(gallery_gno_seq.nextval,?,?,?,?)"; 
 			// SQL문을 전송해서 실행
 			//Statement stmt = conn.createStatement();
 			//stmt.executeUpdate(sql);
@@ -274,7 +275,7 @@ public class GalleryDaoImpl implements GalleryDao{
 			sql += "from( ";
 			sql += "  select rownum as r, gno, title";
 			sql += "  from( ";
-			sql += "  select gno, title from gallery order by gno ";
+			sql += "  select gno, title from gallery order by gno desc";
 			sql += "  ) ";
 			sql += "  where rownum<=? ";
 			sql += ") ";

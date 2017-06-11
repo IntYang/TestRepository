@@ -36,12 +36,12 @@ public class JdbcController {
 	@RequestMapping("/html/gallery")
 	public String gallery(@RequestParam(defaultValue="1") int pageNo, Model model){
 		
-		// 한 페이지를 구성하는 행 수
+				// 한 페이지를 구성하는 행 수
 				int rowsPerPage = 6; // 고정값(개발자가 정함
 				// 한 그룹을 구성하는 페이지 수
 				int pagesPerGroup = 5; // 고정값
 				// 총 행수
-				int totalRows = 100;
+				int totalRows = 30;
 				// 전체 페이지 수
 				int totalPageNo = (totalRows/rowsPerPage) + ((totalRows % rowsPerPage !=0) ? 1:0);
 				// 전체 그룹 수
@@ -78,24 +78,23 @@ public class JdbcController {
 	}
 	
 
-	
-	@RequestMapping(value = "/html/galleryrWrite", method = RequestMethod.POST)
-	public String galleryWritePost(Gallery gallery) throws IllegalStateException, IOException {
-		
+	@RequestMapping(value = "/html/galleryWrite", method = RequestMethod.POST)
+	public String galleryWritePost(Gallery gallery) throws Exception {
+		if (!gallery.getattach().isEmpty()) {
 			gallery.setOriginalfilename(gallery.getattach().getOriginalFilename());
 			String originalFileName = gallery.getOriginalfilename();
 
 			String realPath = servletContext.getRealPath("/WEB-INF/upload/");
 			String fileName = new Date().getTime() + "-" + originalFileName;
-
 			File file = new File(realPath + fileName);
 			gallery.getattach().transferTo(file);
 			gallery.setSavedfilename(fileName);
-			gallery.setFilepath("/WEB-INF/upload/" + fileName);
-		
+			gallery.setFilepath("/WEB-INF/upload/" + originalFileName);
+		}
 		service.galleryWrite(gallery);
 		return "redirect:gallery";
 	}
+
 	
 	@RequestMapping("/html/galleryDetail")
 	public String galleryDetail(int gno, Model model){
@@ -132,6 +131,7 @@ public class JdbcController {
 			// 첨부파일을 서버 로컬 시스템에 저장
 			String realPath = servletContext.getRealPath("/WEB-INF/upload/");
 			File file = new File(realPath + fileName);
+			gallery.setFilepath("/WEB-INF/upload/" + gallery.getOriginalfilename());
 			gallery.getattach().transferTo(file);
 			
 		}

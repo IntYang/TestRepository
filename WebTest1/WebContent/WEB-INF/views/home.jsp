@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -33,7 +34,7 @@
 <body>
 
     <div class="brand">Make JAVA World</div>
-    <div class="address-bar">WelCome to Java World | Professor Yong Kkon Shin | Made By SuYang Jung</div>
+    <div class="address-bar">WelCome to Java World | Professor Yong Kwon Shin | Made By SuYang Jung</div>
 
     <!-- Navigation -->
     <nav class="navbar navbar-default" role="navigation">
@@ -85,17 +86,32 @@
                         </ol>
 
                         <!-- Wrapper for slides -->
+                       
                         <div class="carousel-inner">
+                        
+                         
                             <div class="item active">
-                                <img class="img-responsive img-full" src="./resources/img/slide-1.jpg" alt="">
+                             	
+                                <img class="img-responsive img-full" src="html/file/upload?gno=41" alt="">
+                            	
                             </div>
+                            
                             <div class="item">
-                                <img class="img-responsive img-full" src="./resources/img/slide-2.jpg" alt="">
+                             	
+                                <img class="img-responsive img-full" src="html/file/upload?gno=1" alt="">
+                            	
                             </div>
+                            
                             <div class="item">
-                                <img class="img-responsive img-full" src="./resources/img/slide-3.jpg" alt="">
+                             	
+                                <img class="img-responsive img-full" src="html/file/upload?gno=39" alt="">
+                            	
                             </div>
+                           
+                       
+                           
                         </div>
+                      
 
                         <!-- Controls -->
                         <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">

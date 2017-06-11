@@ -10,7 +10,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>About - Business Casual - Start Bootstrap Theme</title>
+<title>Gallery</title>
 
 <!-- Bootstrap Core CSS -->
 <link href="/WebTest1/resources/css/bootstrap.min.css" rel="stylesheet">
@@ -74,7 +74,7 @@
 				</div>
 				<div class="col-md-6">
 					<img class="img-responsive img-border-left"
-						src="/WebTest1/resources/img/slide-2.jpg" alt="">
+						src="/WebTest1/resources/img/4rdRevolution.JPG" alt="">
 				</div>
 				<div class="col-md-6">
 					<p>This is a great place to introduce your company or project
@@ -108,18 +108,18 @@
 
 
 				<div class="col-lg-12">
-				<ul style="line-height:0;">
-					<li><c:forEach var="g" items="${list}">
+				<dl style="line-height:0;">
+					<dt><c:forEach var="g" items="${list}">
 					
-						<div class="col-sm-4 text-center" style="border: 1px solid black; width: 33%; margin: 10px 10px 10px 10px;">
+						<div class="col-sm-4 centered" style="border: 1px solid black; width: 33%; margin: 10px 10px 10px 120px;">
 							<a href="galleryDetail?gno=${g.gno}"> <img
 								class="img-responsive" src="file/upload?gno=${g.gno}"
 								style="vertical-align: center; width: auto; height: 250px;"
 								alt=""></a> 
 						</div>
 						
-					</c:forEach></li>
-				</ul>
+					</c:forEach></dt>
+				</dl>
 				</div>
 
 
