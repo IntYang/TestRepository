@@ -60,10 +60,10 @@
                         <a href="html/gallery">Gallery</a>
                     </li>
                     <li>
-                        <a href="./html/blog.html">Blog</a>
+                        <a href="/html/blog.html">Board</a>
                     </li>
                     <li>
-                        <a href="./html/contact.html">Contact</a>
+                        <a href="html/contact">Contact</a>
                     </li>
                 </ul>
             </div>
@@ -134,24 +134,21 @@
                 </div>
             </div>
         </div>
+        </div>
 
         <div class="row">
             <div class="box">
                 <div class="col-lg-12">
                     <hr>
-                    <h2 class="intro-text text-center">Build a website
-                        <strong>worth visiting</strong>
+                    <h2 class="intro-text text-center">This is Java
                     </h2>
                     <hr>
-                    <img class="img-responsive img-border img-left" src="./resources/img/intro-pic.jpg" alt="">
+                    <img class="img-responsive img-border img-left" src="./resources/img/thisisjavabook.JPG" alt="">
                     <hr class="visible-xs">
-                    <p>The boxes used in this template are nested inbetween a normal Bootstrap row and the start of your column layout. The boxes will be full-width boxes, so if you want to make them smaller then you will need to customize.</p>
-                    <p>A huge thanks to <a href="http://join.deathtothestockphoto.com/" target="_blank">Death to the Stock Photo</a> for allowing us to use the beautiful photos that make this template really come to life. When using this template, make sure your photos are decent. Also make sure that the file size on your photos is kept to a minumum to keep load times to a minimum.</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc placerat diam quis nisl vestibulum dignissim. In hac habitasse platea dictumst. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-                </div>
+                    <p>『이것이 자바다』은 15년 이상 자바 언어를 교육해온 자바 전문강사의 노하우를 아낌 없이 담아낸 자바 입문서이다. 자바 입문자를 배려한 친절한 설명과 배려로 1장에 풀인원 설치 방법을 제공하여 쉽게 학습환경을 구축할 수 있다. 또한 중급 개발자로 나아가기 위한 람다식(14장), JavaFX(17장), NIO(18~19장) 수록되어 있으며 각 챕터마다 확인문제 제공. 풀이와 답은 인터넷 강의에서 친절한 해설을 통해 알려준다.</p>
             </div>
         </div>
-
+<!--  
         <div class="row">
             <div class="box">
                 <div class="col-lg-12">
@@ -164,7 +161,7 @@
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc placerat diam quis nisl vestibulum dignissim. In hac habitasse platea dictumst. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
                 </div>
             </div>
-        </div>
+        </div>-->
 
     </div>
     <!-- /.container -->

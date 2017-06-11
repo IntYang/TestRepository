@@ -36,6 +36,11 @@ public class HomeController {
 		//앞에 WEB-INF/views뒤에 .jsp 생략
 	}
 	
+	@RequestMapping("/html/contact")
+	public String contact(){
+		return "html/contact";
+	}
+	
 	/*
 	@RequestMapping("/html/gallery")
 	public String gallery() {

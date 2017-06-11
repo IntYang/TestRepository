@@ -34,12 +34,10 @@
 					$("#spanFileName").text(originalfilename); // 이름 바꾸는 기능
 			 		}
 				}
-			}
+			
 		</script>
 		
 	
-		
-		
 		
 		
 	</head>
@@ -47,7 +45,7 @@
 	
 	<div class="brand">Make JAVA World</div>
 	<div class="address-bar">WelCome to Java World | Professor Yong
-		Kkon Shin | Made By SuYang Jung</div>
+		Kwon Shin | Made By SuYang Jung</div>
 	<div class="container">
 		<div class="row">
 			<div class="box">
@@ -94,7 +92,11 @@
 				</div>
 			</div>
 			
+			
+			
 			<input type="submit" class="btn btn-info" value="수정"/>
+			<a href="gallery"> <input type="button" class="btn btn-success"
+				value="취소" /></a>
 		</form>
 		
 	

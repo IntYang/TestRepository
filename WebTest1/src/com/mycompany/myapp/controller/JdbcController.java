@@ -41,7 +41,7 @@ public class JdbcController {
 				// 한 그룹을 구성하는 페이지 수
 				int pagesPerGroup = 5; // 고정값
 				// 총 행수
-				int totalRows = 30;
+				int totalRows = 36;
 				// 전체 페이지 수
 				int totalPageNo = (totalRows/rowsPerPage) + ((totalRows % rowsPerPage !=0) ? 1:0);
 				// 전체 그룹 수

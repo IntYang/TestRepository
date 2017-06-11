@@ -26,10 +26,12 @@
 <link
 	href="https://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic"
 	rel="stylesheet" type="text/css">
-	
+
 </head>
+
 <body>
 
+	<
 	<div class="brand">Make JAVA World</div>
 	<div class="address-bar">WelCome to Java World | Professor Yong
 		Kkon Shin | Made By SuYang Jung</div>
@@ -68,21 +70,43 @@
 				<div class="col-lg-12">
 					<hr>
 					<h2 class="intro-text text-center">
-						About <strong>IoT Course</strong>
+						Contact <strong>Korea Software Industry Association</strong>
 					</h2>
 					<hr>
 				</div>
-				<div class="col-md-6">
-					<img class="img-responsive img-border-left"
-						src="/WebTest1/resources/img/4rdRevolution.JPG" alt="">
+				<div class="col-md-8">
+					<!-- * Daum 지도 - 지도퍼가기 -->
+					<!-- 1. 지도 노드 -->
+					<div id="daumRoughmapContainer1497201958266"
+						class="root_daum_roughmap root_daum_roughmap_landing"></div>
+
+					<!--
+	2. 설치 스크립트
+	* 지도 퍼가기 서비스를 2개 이상 넣을 경우, 설치 스크립트는 하나만 삽입합니다.
+-->
+					<script charset="UTF-8" class="daum_roughmap_loader_script"
+						src="http://dmaps.daum.net/map_js_init/roughmapLoader.js"></script>
+
+					<!-- 3. 실행 스크립트 -->
+					<script charset="UTF-8">
+						new daum.roughmap.Lander({
+						"timestamp" : "1497201958266",
+						"key" : "i53a",
+						"mapWidth" : "600",
+						"mapHeight" : "300"
+					}).render();
+				</script>
 				</div>
-				<div class="col-md-6">
-				<p>4차산업혁명 대비 고급인재 양성을 위한 SW집중교육</p>
-					<ul>
-						<li> 응용 SW 엔지니어 과정
-						<li> 빅데이터 분석 개발자
-						<li> IoT 엔지니어 과정
-					</ul>
+				<div class="col-md-4">
+					<p>
+						Phone: <strong>+82 02.2188.6986</strong>
+					</p>
+					<p>
+						Email: <strong><a href="sdm@sw.or.kr">sdm@sw.or.kr</a></strong>
+					</p>
+					<p>
+						Address: <strong>서울 송파구 중대로 135, 가락본동 IT 벤처타워 서관 12층</strong>
+					</p>
 				</div>
 				<div class="clearfix"></div>
 			</div>
@@ -93,65 +117,34 @@
 				<div class="col-lg-12">
 					<hr>
 					<h2 class="intro-text text-center">
-						Our <strong>IOT Class</strong>
+						Contact <strong>form</strong>
 					</h2>
 					<hr>
-					
-			<a href="galleryWrite">
-			<span style="float:right">	<input type="button" class="btn btn-success" value="작성"/> </span>
-			</a>
-					
-				</div>
-
-
-				<div class="col-lg-12">
-				<dl style="line-height:0;">
-					<dt><c:forEach var="g" items="${list}">
-					
-						<div class="col-sm-4 centered" style="border: 1px solid black; width: 33%; margin: 10px 10px 10px 120px;">
-							<a href="galleryDetail?gno=${g.gno}"> <img
-								class="img-responsive" src="file/upload?gno=${g.gno}"
-								style="vertical-align: center; width: auto; height: 250px;"
-								alt=""></a> 
+					<p>문의사항 제출</p>
+					<div class="row">
+						<div class="form-group col-lg-4">
+							<label>Name</label> <input type="text" class="form-control">
 						</div>
-						
-					</c:forEach></dt>
-				</dl>
+						<div class="form-group col-lg-4">
+							<label>Email Address</label> <input type="email"
+								class="form-control">
+						</div>
+						<div class="form-group col-lg-4">
+							<label>Phone Number</label> <input type="tel"
+								class="form-control">
+						</div>
+						<div class="clearfix"></div>
+						<div class="form-group col-lg-12">
+							<label>Message</label>
+							<textarea class="form-control" rows="6"></textarea>
+						</div>
+						<div class="form-group col-lg-12">
+							<input type="hidden" name="save" value="contact">
+							<button type="submit" class="btn btn-default">Submit</button>
+						</div>
+					</div>
+					</form>
 				</div>
-
-
-				<div class="row text-center">
-				<ul class="pagination">
-					<li><a href="gallery?pageNo=1">처음</a></li>
-
-					<c:if test="${groupNo>1}">
-						<li><a href="gallery?pageNo=${startPageNo-1}">이전</a></li>
-					</c:if>
-					
-					
-					<c:forEach var="i" begin="${startPageNo}" end="${endPageNo}">
-				&nbsp; <!-- 공백임, "문자 참조" -->
-					<li>	<a href="gallery?pageNo=${i}"
-							<c:if test="${pageNo==i}"> style="font-weight:bold; color:red; text-align: center;" </c:if>>
-							${i} </a>			</li>							
-				&nbsp;
-			</c:forEach>
-					
-
-					<c:if test="${groupNo<totalGroupNo}">
-						<li><a href="gallery?pageNo=${endPageNo+1}">다음</a></li>
-					</c:if>
-
-					<li><a href="gallery?pageNo=${totalPageNo}">맨끝</a></li>
-					</ul>
-				</div>
-
-
-
-
-
-
-				<div class="clearfix"></div>
 			</div>
 		</div>
 
