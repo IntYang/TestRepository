@@ -16,12 +16,12 @@ public class CoapResource01Client {
 	//Method
 	public String get(){
 		coapClient.setURI("coap://192.168.3.22/resource01");
-		CoapResponse response = coapClient.get();
-		if(response.getCode() == CoAP.ResponseCode.CONTENT){
+		CoapResponse response = coapClient.get(); //서버에서 응답 오면 다음거 처리하게 (블로킹방식)
+		if(response.getCode() == CoAP.ResponseCode.CONTENT){ //코드가 정상 인지
 			return response.getResponseText();
 		}
-		else {
-			return null;
+		else { //컨텐트가 안실려있으면
+			return null; // 널리턴
 		}
 	}
 	

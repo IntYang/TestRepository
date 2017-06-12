@@ -10,7 +10,7 @@ public class CoapResource01 extends CoapResource {
 	private  ThermistorSensor thermistorSensor;
 	//Constructor
 	public CoapResource01(){
-		super("resource01");
+		super("resource01"); //리소스 식별이름, 클라이언트가 리소스를 요청할 때
 		PCF8591 pcf8591 = new PCF8591(0x48, PCF8591.AIN_1);
 		thermistorSensor = new ThermistorSensor(pcf8591);
 		
