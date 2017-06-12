@@ -88,7 +88,7 @@ public class Exam12DBController {
 		return "redirect:/jdbc/exam05";
 	}
 	
-	
+	/*
 	@RequestMapping(value="/jdbc/exam03", method = RequestMethod.GET)
 	public String exam03Get(){
 		return "jdbc/exam03";
@@ -114,7 +114,7 @@ public class Exam12DBController {
 		service.memberJoin(member);
 		return "redirect:/";
 	}
-	
+	*/
 	
 	@RequestMapping("/jdbc/exam04")
 	public String exam04(Model model){
@@ -220,6 +220,17 @@ public class Exam12DBController {
 	
 	
 	
+//	@RequestMapping(value="/jdbc/exam03", method=RequestMethod.POST)
+//	public String exam02Post(String btitle, String bwriter, String bpassword, String bcontent,MultipartFile battach){
+//		LOGGER.info("실행됨");
+//		LOGGER.info("btitle: " + board.getBtitle());
+//		LOGGER.info("bwriter: " + board.getBwriter());
+//		LOGGER.info("첨부파일명: " + battach.getOriginalFilename());
+//		return "redirect:/";
+//	}
+	
+	
+	
 	@RequestMapping("/jdbc/exam06")
 	public String exam06(@RequestParam(defaultValue="1") int pageNo, Model model){
 		// 한 페이지를 구성하는 행 수
@@ -256,6 +267,38 @@ public class Exam12DBController {
 		// View 이름 리턴 -> jsp에서 페이저 만들 때 사용한다.
 		return "jdbc/exam06";
 	}
+	
+	@RequestMapping(value = "/jdbc/exam03", method = RequestMethod.GET)
+	public String exam06WriteGet() {
+		return "jdbc/exam03";
+
+	}
+
+	@RequestMapping(value = "/jdbc/exam03", method = RequestMethod.POST)
+	public String exam06WritePost(Exam12Member member) throws Exception {
+		// board Command 객체
+		// 첨부 파일에 대한 정보를 컬럼값으로 설정
+		member.setMoriginalfilename(member.getMattach().getOriginalFilename());
+		member.setMfilecontent(member.getMattach().getContentType());
+		String fileName = new Date().getTime() + "-" + member.getMoriginalfilename();
+		member.setMsavedfilename(fileName);
+		
+
+		// 첨부 파일을 서버 로컬 시스템에 저장
+		String realPath = servletContext.getRealPath("/WEB-INF/upload/");
+		LOGGER.info(realPath);
+		File file = new File(realPath + fileName);
+		member.getMattach().transferTo(file);
+
+		// 서비스 객체로 요청 처리 요청
+		service.memberJoin(member);
+
+		return "redirect:/jdbc/exam06";
+	}
+	
+	
+	
+	
 	
 	@RequestMapping("/jdbc/exam06Detail")
 	public String exam06Detail(String mid, Model model){

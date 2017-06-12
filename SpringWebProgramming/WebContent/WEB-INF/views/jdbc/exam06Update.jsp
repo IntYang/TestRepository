@@ -62,6 +62,15 @@
 			<div class="form-group">
 				<div class="input-group">
 					<span class="input-group-addon">
+						<span class="glyphicon glyphicon-lock"></span>
+					</span>
+					<input type="text" class="form-control" placeholder="전화번호" name="mtel" value="${member.mtel}"/>
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<div class="input-group">
+					<span class="input-group-addon">
 						<span class="glyphicon glyphicon-tag"></span>
 					</span>
 					<input type="text" class="form-control" placeholder="주소" name="maddress" value="${member.maddress}"/>

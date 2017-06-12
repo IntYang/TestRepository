@@ -41,6 +41,7 @@
 				</div>
 			</div>
 			
+			
 			<div class="form-group">
 				<div class="input-group">
 					<span class="input-group-addon">
@@ -55,27 +56,27 @@
 					<span class="input-group-addon">
 						<span class="glyphicon glyphicon-lock"></span>
 					</span>
-					<input type="text" class="form-control" placeholder="주소" name="maddress"/>
+					<input type="text" class="form-control" placeholder="이메일" name="memail"/>
 				</div>
 			</div>
 			
+				<div class="form-group">
+				<div class="input-group">
+					<span class="input-group-addon">
+						<span class="glyphicon glyphicon-lock"></span>
+					</span>
+					<input type="text" class="form-control" placeholder="나이" name="mage"/>
+				</div>
+			</div>
 			<div class="form-group">
 				<div class="input-group">
 					<span class="input-group-addon">
 						<span class="glyphicon glyphicon-lock"></span>
 					</span>
-					<input type="text" class="form-control" placeholder="이메일" name="memail"/>
+					<input type="text" class="form-control" placeholder="주소" name="maddress"/>
 				</div>
 			</div>
 			
-			<div class="form-group">
-				<div class="input-group">
-					<span class="input-group-addon">
-						<span class="glyphicon glyphicon-leaf"></span>
-					</span>
-					<input type="number" class="form-control" placeholder="나이" name="mage"/>
-				</div>
-			</div>	
 			
 		
 	

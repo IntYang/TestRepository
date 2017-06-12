@@ -46,41 +46,11 @@
 					<span class="input-group-addon">
 						<span class="glyphicon glyphicon-lock"></span>
 					</span>
-					<textarea class="form-control" rows="5"cols="30"placeholder="내용"name="bcontent"></textarea>
+					<textarea class="form-control" rows="5"cols="30" placeholder="내용"name="bcontent"></textarea>
 				</div>
 			</div>
 			
-			<div class="form-group">
-				<div class="input-group">
-					<span class="input-group-addon">
-						<span class="glyphicon glyphicon-leaf"></span>
-					</span>
-					<input type="number" class="form-control" placeholder="나이" name="mage"/>
-				</div>
-			</div>		
-			<div class="form-group">
-				<div class="input-group">
-					<span class="input-group-addon" style="border-right:1px solid #ccc;">
-						<span class="glyphicon glyphicon-cog"></span>
-					</span>					
-					<input name="mskill" type="checkbox" value="Java"
-						style="width:25px;height:25px;margin-left:10px;"/>Java
-					<input name="mskill" type="checkbox" value="SQL"
-						style="width:25px;height:25px"/>SQL
-					<input name="mskill" type="checkbox" value="JSP"
-						style="width:25px;height:25px"/>JSP
-					<input name="mskill" type="checkbox" value="Spring"
-						style="width:25px;height:25px"/>Spring
-				</div>
-			</div>
-			<div class="form-group">
-				<div class="input-group">
-					<span class="input-group-addon">
-						<span class="glyphicon glyphicon-calendar"></span>
-					</span>
-					<input type="date" class="form-control" placeholder="생년월일" name="mbirth"/>
-				</div>
-			</div>
+			
 			<div class="form-group">
 				<div class="input-group">
 					<span class="input-group-addon">

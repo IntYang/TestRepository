@@ -88,7 +88,7 @@ public void setMsavedfilename(String msavedfilename) {
 public String getMfilecontent() {
 	return mfilecontent;
 }
-public void setMfilecontent(String mfileconent) {
+public void setMfilecontent(String mfilecontent) {
 	this.mfilecontent = mfilecontent;
 }
 

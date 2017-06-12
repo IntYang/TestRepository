@@ -125,6 +125,15 @@
 					<span class="input-group-addon">
 						<span class="glyphicon glyphicon-lock"></span>
 					</span>
+					<input type="text" class="form-control" placeholder="나이" name="mage" value="${member.mage}" disabled/>
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<div class="input-group">
+					<span class="input-group-addon">
+						<span class="glyphicon glyphicon-lock"></span>
+					</span>
 					<input type="text" class="form-control" placeholder="이메일" name="memail" value="${member.memail}" disabled/>
 				</div>
 			</div>

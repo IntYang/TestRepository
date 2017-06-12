@@ -59,5 +59,9 @@
 			
 			<a href="exam06?pageNo=${totalPageNo}">[맨끝]</a>
 		</div>
+		
+		<div style="margin-top: 10px;width:700px;text-align:right;">
+				<a href="exam03" class="btn btn-success">회원가입</a>
+			</div>
 	</body>
 </html>
