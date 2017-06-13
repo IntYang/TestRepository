@@ -13,6 +13,8 @@ public class CoapResource02Client {
 	//Constructor
 	public CoapResource02Client(){
 		coapClient = new CoapClient();
+		coapClient.useCONs();
+		//coapClient.useNONs()();
 	}
 	
 	//Method
@@ -20,7 +22,7 @@ public class CoapResource02Client {
 		String queryString ="kind=ultrasonicsensor&angle=" + angle;
 		
 		coapClient.setURI("coap://192.168.3.22/resource02?" + queryString);
-		CoapResponse response = coapClient.get(); //서버에서 응답 오면 다음거 처리하게 (블로킹방식)
+		CoapResponse response = coapClient.get(); //서버에서 응답 오면 다음거 처리하게 (블로킹방식 = 동기방식)
 		
 		if(response == null){
 			return get(angle); // 재귀호출
