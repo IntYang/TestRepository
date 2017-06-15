@@ -7,7 +7,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
   <modelVersion>4.0.0</modelVersion>
   <!-- 프로젝트 개발사의 도메인 : 넣는 이유 - 회사의 도메인은 전 세계서 유일 -->
   <groupId>com.mycompany</groupId>
-  <!-- 프로젝트의 식별 이름 - 같은 회사에 프로젝트 여러개 있으니까 -->
+  <!-- 웹 어플리케이션의 식별 이름 - 같은 회사에 프로젝트 여러개 있으니까 -->
   <artifactId>SpringWebProgramming</artifactId>
   <!-- 프로젝트의 버전 -->
   <version>1.0</version>
