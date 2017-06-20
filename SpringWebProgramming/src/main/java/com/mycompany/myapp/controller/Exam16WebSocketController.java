@@ -15,6 +15,9 @@ public class Exam16WebSocketController {
 		return "websocket/chatClient";
 	}
 	
-	
+	@RequestMapping("/websocket/measureClient")
+	public String measureClient(){
+		return "websocket/measureClient";
+	}
 	
 }

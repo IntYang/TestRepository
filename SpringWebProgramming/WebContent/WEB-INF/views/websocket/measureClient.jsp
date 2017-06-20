@@ -15,13 +15,13 @@
 			var ws = null;
 		
 			function handleBtnConnect(){
-				ws = new WebSocket("ws://"+ window.location.host + "/SpringWebProgramming/websocket/echo");
+				ws = new WebSocket("ws://"+ window.location.host + "/SpringWebProgramming/websocket/measure");
 				/* 함수 : onClick()과 비슷한 역할 */
 				ws.onopen = handleonOpen;
 				ws.onmessage = handleonMessage;
 				ws.onclose = handleonClose;
 				//console.log(ws);
-				
+				$("#btnConnect").attr("disabled", true);
 			}
 			
 			function handleonOpen(){
@@ -32,7 +32,7 @@
 			}
 			function handleonMessage(event){
 				var strMessage = event.data;
-				display("[에코]" + strMessage);
+				display("[측정값]" + strMessage);
 			}
 			function handleonClose(){
 				display("[연결끊김]");
@@ -45,10 +45,8 @@
 					}
 				
 			}
-			function handleBtnSend(){
-				var strMessage = $("#txtMessage").val();
-				ws.send(strMessage);
-			}
+			
+			
 			function display(message){ // 메시지 길어지면 스크롤 따라서 밑으로 내려가게 하는 기능
 				$("#divDisplay").append("<span style='display:block;'>" + message + "</span>");
 				if($("#divDisplay span").length>20){
@@ -60,19 +58,13 @@
 		</script>
 	</head>
 	<body>
-		<h3>WebSocket-Echo</h3>
+		<h3>WebSocket-Measure</h3>
 		<hr/>
 		<div>
 			<button id="btnConnect" onclick="handleBtnConnect()" class="btn btn-warning">연결하기</button>
 			<button id="btnDisConnect" onclick="handleBtnDisConnect()" class="btn btn-danger">연결끊기</button>
 		</div>
-		
-		<div>
-			<input id="txtMessage" type="text"/>
-			<button id="btnSend" onclick="handleBtnSend()" class="btn btn-info">메시지전송</button>
-		
-		</div>
-		
+	
 		<div>
 			<div id="divDisplay" style="width:500px; height:300px; padding:5px; overflow-y:scroll; border:1px solid black; margin-top:5px;"></div>
 		</div>
