@@ -13,7 +13,7 @@ public class SensingCar {
 	private CoapResourceServer coapResourceServer;
 	
 	//Constructor
-	public SensingCar(){
+	public SensingCar() throws Exception{
 		coapResourceServer = new CoapResourceServer();
 		
 	}
@@ -31,7 +31,7 @@ public class SensingCar {
 		System.out.println("SensingCar stop...");
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		
 		SensingCar sensingCar = new SensingCar();
 		sensingCar.start();

@@ -4,6 +4,10 @@ package sensingcar.coap.server.resource;
 import com.pi4j.io.gpio.RaspiPin;
 import hardware.lcd.LCD1602;
 import hardware.led.RGBLedPWM;
+import java.net.Inet4Address;
+import java.net.InetAddress;
+import java.net.NetworkInterface;
+import java.util.Enumeration;
 import org.eclipse.californium.core.CoapResource;
 import org.eclipse.californium.core.server.resources.CoapExchange;
 import org.json.JSONObject;
@@ -21,7 +25,7 @@ public class LcdResource extends CoapResource {
 public LcdResource() throws Exception{
 	super("lcd"); // 리소스 식별명
 	lcd = new LCD1602(0x27);
-	setText("RPI-1-2","192.168.3.22");
+	setText("RPI-1-2", getIPaddress());
 	
 }	
 
@@ -70,6 +74,28 @@ public LcdResource() throws Exception{
 		}		
 	
 	}		
+	
+	
+	public String getIPaddress() throws Exception {
+		String wlan0="";
+		Enumeration<NetworkInterface> niEnum = NetworkInterface.getNetworkInterfaces();//iterator 나오기 전에 많이 쓰던 타입
+		while (niEnum.hasMoreElements()) {
+			NetworkInterface ni = niEnum.nextElement();
+			String displayName = ni.getDisplayName();
+			if (displayName.equals("wlan0")) {
+				Enumeration<InetAddress> iaEnum = ni.getInetAddresses();
+				while (iaEnum.hasMoreElements()) {
+					InetAddress ia = iaEnum.nextElement();
+					if (ia instanceof Inet4Address) {
+						//String text = "R:" + ia.getHostAddress();
+						wlan0 = ia.getHostAddress();
+						
+					}
+				}
+			} 
+		}
+			return wlan0;
+	}
 }
 	
 	

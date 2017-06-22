@@ -14,21 +14,28 @@ public class BuzzerResource extends CoapResource {
 private ActiveBuzzor buzzer;
 private String currStatus;
 private static final Logger logger = LoggerFactory.getLogger(BuzzerResource.class);
+private static BuzzerResource instance;
+
+
 //Constructor
 public BuzzerResource() throws Exception{
 	super("buzzer"); // 리소스 식별명
+	instance = this; 
 	buzzer = new ActiveBuzzor(RaspiPin.GPIO_24);
 	off();
 }	
 
 
 //Method-------------------
+	public static BuzzerResource getInstance(){
+		return instance;
+	}
 
-	private void on(){
+	public void on(){
 		buzzer.on();
 		currStatus = "on";
 	}
-	private void off(){
+	public void off(){
 		buzzer.off();
 		currStatus = "off";
 	}
