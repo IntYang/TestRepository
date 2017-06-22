@@ -49,7 +49,29 @@ public class HomeController {
 		model.addAttribute("green", jsonObject.getString("green"));
 		model.addAttribute("blue", jsonObject.getString("blue"));
 		
-		//model.addAttribute("cameraUrl", "http://192.168.3.9:50001?action=stream");
+		//------------------------------------------------------
+		jsonObject = new JSONObject();
+		jsonObject.put("command", "status");
+		json = jsonObject.toString();
+		coapClient.setURI("coap://192.168.3.22/laseremitter");
+		coapResponse = coapClient.post(json, MediaTypeRegistry.APPLICATION_JSON);
+		json = coapResponse.getResponseText();
+		jsonObject = new JSONObject(json);
+		model.addAttribute("laseremitterStatus", jsonObject.getString("status"));
+		
+		//---------------------------------------------------------------------
+		
+		jsonObject = new JSONObject();
+		jsonObject.put("command", "status");
+		json = jsonObject.toString();
+		coapClient.setURI("coap://192.168.3.22/buzzer");
+		coapResponse = coapClient.post(json, MediaTypeRegistry.APPLICATION_JSON);
+		json = coapResponse.getResponseText();
+		jsonObject = new JSONObject(json);
+		model.addAttribute("buzzerStatus", jsonObject.getString("status"));
+		
+		
+		
 		coapClient.shutdown();
 		return "controlpanel";
 	}
@@ -96,6 +118,50 @@ public class HomeController {
 		pw.flush();
 		pw.close();
 	}
+	
+	@RequestMapping("/laseremitter")
+	public void laseremitter(String command, String status, HttpServletResponse response) throws IOException{
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("command", command);
+		
+		jsonObject.put("status", status);
+		String reqJson = jsonObject.toString();
+		
+		CoapClient coapClient = new CoapClient();
+		coapClient.setURI("coap://192.168.3.22/laseremitter");
+		CoapResponse coapResponse = coapClient.post(reqJson, MediaTypeRegistry.APPLICATION_JSON);
+		String resJson = coapResponse.getResponseText();
+		coapClient.shutdown();
+		
+		response.setContentType("application/json; charset=UTF-8");
+		PrintWriter pw = response.getWriter();
+		pw.write(resJson);
+		pw.flush();
+		pw.close();
+	}
+	
+	@RequestMapping("/buzzer")
+	public void buzzer(String command, String status, HttpServletResponse response) throws IOException{
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("command", command);
+		
+		jsonObject.put("status", status);
+		String reqJson = jsonObject.toString();
+		
+		CoapClient coapClient = new CoapClient();
+		coapClient.setURI("coap://192.168.3.22/buzzer");
+		CoapResponse coapResponse = coapClient.post(reqJson, MediaTypeRegistry.APPLICATION_JSON);
+		String resJson = coapResponse.getResponseText();
+		coapClient.shutdown();
+		
+		response.setContentType("application/json; charset=UTF-8");
+		PrintWriter pw = response.getWriter();
+		pw.write(resJson);
+		pw.flush();
+		pw.close();
+	}
+	
+	
 }
 
 

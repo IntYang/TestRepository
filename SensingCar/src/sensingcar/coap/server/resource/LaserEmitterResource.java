@@ -19,19 +19,19 @@ private static final Logger logger = LoggerFactory.getLogger(LaserEmitterResourc
 public LaserEmitterResource() throws Exception{
 	super("laseremitter"); // 리소스 식별명
 	lasorEmitter = new LaserEmitter(RaspiPin.GPIO_25);
-	stop();
+	off();
 }	
 
 
 //Method-------------------
 
-	private void shot(){
+	private void on(){
 		lasorEmitter.shot();
-		currStatus = "shot";
+		currStatus = "on";
 	}
-	private void stop(){
+	private void off(){
 		lasorEmitter.stop();
-		currStatus = "stop";
+		currStatus = "off";
 	}
 
 	@Override
@@ -48,9 +48,9 @@ public LaserEmitterResource() throws Exception{
 			if(command.equals("change")) {
 				String status = requestJsonObject.getString("status");
 				
-				if(status.equals("shot")) shot();
-				else if(status.equals("stop")) stop();
-				
+				if(status.equals("on")) on();
+				else if(status.equals("off")) off();
+			
 			} else if(command.equals("status")) {
 			}
 			JSONObject responseJsonObject = new JSONObject();
