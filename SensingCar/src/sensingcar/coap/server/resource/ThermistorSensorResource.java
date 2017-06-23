@@ -31,7 +31,6 @@ public ThermistorSensorResource() throws Exception{
 		@Override
 		public void run() {
 			
-			int count=0;
 			
 			while(true){
 			
