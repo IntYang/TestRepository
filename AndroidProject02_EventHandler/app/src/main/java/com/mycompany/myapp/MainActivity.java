@@ -5,15 +5,16 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 
 /* 이벤트 처리 코드 :
-*  버튼에 따라 이미지가 바뀌게 하는 실습
-* */
+*  버튼에 따라 이미지가 바뀌게 하는 실습습* */
 
 public class MainActivity extends AppCompatActivity {
     private ImageView imgTitle;
     private Button btnImg1;
     private Button btnImg2;
+    private RadioButton rbImg1, rbImg2;
 
 
 
@@ -25,22 +26,36 @@ public class MainActivity extends AppCompatActivity {
         imgTitle = (ImageView) findViewById(R.id.imgTitle);
         btnImg1 = (Button) findViewById(R.id.btnImg1);
         btnImg2 = (Button) findViewById(R.id.btnImg2);
+        rbImg1 = (RadioButton) findViewById(R.id.rbImg1);
+        rbImg2 = (RadioButton) findViewById(R.id.rbImg2);
 
-        btnImg1.setOnClickListener(handleBtnImg1);
-        btnImg2.setOnClickListener(handleBtnImg2);
+        btnImg1.setOnClickListener(handleBtnImg);
+        btnImg2.setOnClickListener(handleBtnImg);
+        rbImg1.setOnClickListener(handleBtnImg);
+        rbImg2.setOnClickListener(handleBtnImg);
+
     }
-    private View.OnClickListener handleBtnImg1 = new View.OnClickListener() {
+    private View.OnClickListener handleBtnImg = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            imgTitle.setImageResource(R.drawable.photo01);
+            if(v == btnImg1 || v == rbImg1) {
+                imgTitle.setImageResource(R.drawable.photo1);
+            }
+            else if(v==btnImg2|| v == rbImg2){
+                imgTitle.setImageResource(R.drawable.photo2);
+            }
+
         }
     };
 
-    private View.OnClickListener handleBtnImg2 = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            imgTitle.setImageResource(R.drawable.photo02);
-        }
-    };
+    public void handleBtnImg3(View v){
+
+        imgTitle.setImageResource(R.drawable.photo3);
+    }
+    public void handleRbImg3(View v){
+        imgTitle.setImageResource(R.drawable.photo3);
+    }
+
+
 
 }
