@@ -1,4 +1,3 @@
-
 package sensingcar.coap.server;
 
 import java.net.InetAddress;
@@ -26,14 +25,12 @@ import sensingcar.coap.server.resource.TrackingSensorResource;
 import sensingcar.coap.server.resource.UltrasonicSensorResource;
 
 public class CoapResourceServer {
-	
-
 	//Field
+	private static final Logger logger = LoggerFactory.getLogger(CoapResourceServer.class);	
 	private CoapServer coapServer;
-	private static final Logger logger = LoggerFactory.getLogger(CoapResourceServer.class);
 	
-	//static block(californuim의 자체 로그 출력 금지)
-	static{
+	//static block(californium의 자체 로그 출력 금지)
+	static {
 		CaliforniumLogger.initialize();
 		CaliforniumLogger.setLevel(Level.OFF);
 		ScandiumLogger.initialize();
@@ -41,16 +38,14 @@ public class CoapResourceServer {
 	}
 	
 	//Constructor
-	
-	public CoapResourceServer() throws Exception{
+	public CoapResourceServer() throws Exception {
 		coapServer = new CoapServer();
-			for(InetAddress addr : EndpointManager.getEndpointManager().getNetworkInterfaces()){
+		for(InetAddress addr : EndpointManager.getEndpointManager().getNetworkInterfaces()){
 			if(!addr.isLinkLocalAddress()){
 				coapServer.addEndpoint(new CoapEndpoint(new InetSocketAddress(addr, CoAP.DEFAULT_COAP_PORT)));
 			}
 		}
 		
-		//자원등록
 		coapServer.add(new BackTireResource());
 		coapServer.add(new FrontTireResource());
 		coapServer.add(new BuzzerResource());
@@ -63,20 +58,17 @@ public class CoapResourceServer {
 		coapServer.add(new PhotoresistorSensorResource());
 		coapServer.add(new TrackingSensorResource());
 		coapServer.add(new GasSensorResource());
-		
 	}
-	//Method
 	
-	public void start()
-	{
+	//Method
+	public void start() {
 		logger.info("실행");
 		coapServer.start();
-	}	
-	public void stop(){
+	}
+	
+	public void stop() {
 		logger.info("실행");
 		coapServer.stop();
 		coapServer.destroy();
 	}
-	
-	
 }

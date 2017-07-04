@@ -14,8 +14,6 @@
 	<logger name="sensingcar">
 		<level value="info" />
 	</logger>
-	
-
 
 	<!-- Root Logger -->
 	<root>

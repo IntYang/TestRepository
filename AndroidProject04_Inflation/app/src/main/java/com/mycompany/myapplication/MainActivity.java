@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void handleRadioButton1(View v) {
-        linearLayoutTop.setBackgroundResource(R.drawable.photo1);
+        linearLayoutTop.setBackgroundResource(0x7f02007a);
     }
     public void handleRadioButton2(View v) {
         linearLayoutTop.setBackgroundResource(R.drawable.photo2);

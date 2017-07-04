@@ -57,13 +57,13 @@
 			<version>${org.springframework-version}</version>
 		</dependency>
 
-		<!-- 메이븐 테스트 에러 방지 -->
+		<!-- 메이븐 테스트 에러 방지 
 		<dependency>
 			<groupId>org.apache.tomcat.embed</groupId>
 			<artifactId>tomcat-embed-websocket</artifactId>
 			<version>8.0.44</version>
 		</dependency>
-
+-->
 
 		<!-- spring-websocket 모듈 설정 -->
 		<dependency>

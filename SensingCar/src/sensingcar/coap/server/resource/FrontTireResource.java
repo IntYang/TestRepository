@@ -1,4 +1,3 @@
-
 package sensingcar.coap.server.resource;
 
 import hardware.motor.PCA9685;
@@ -11,44 +10,35 @@ import org.slf4j.LoggerFactory;
 
 public class FrontTireResource extends CoapResource {
 	//Field
-
+	private static final Logger logger = LoggerFactory.getLogger(FrontTireResource.class);
 	private PCA9685 pca9685;
 	private SG90ServoPCA9685Duration servoMotor;
+	private final int maxAngle = 130;
 	private final int minAngle = 60;
-	private final int maxAngle = 120;
 	private int currAngle;
 	
-private static final Logger logger = LoggerFactory.getLogger(FrontTireResource.class);
-
-//Constructor
-public FrontTireResource() throws Exception{
-	super("fronttire"); // 리소스 식별명
-	pca9685 = PCA9685.getInstance();
-	servoMotor = new SG90ServoPCA9685Duration(pca9685, PCA9685.PWM_00);
-	setAngle(90);
-}	
-
-
-
-//Method---------------------
-
-	private void setAngle(int angle){
-		if(angle < minAngle){
-			angle = minAngle;
-		}
-		if(angle > maxAngle){
-			angle = maxAngle;
-		}
+	//Constructor
+	public FrontTireResource() throws Exception {
+		super("fronttire");
+		pca9685 = PCA9685.getInstance();
+		servoMotor = new SG90ServoPCA9685Duration(pca9685, PCA9685.PWM_00);
+		setAngle(90);
+	}
+	
+	//Method
+	private void setAngle(int angle) {
+		if(angle < minAngle) angle = minAngle;
+		if(angle > maxAngle) angle = maxAngle;
 		servoMotor.setAngle(angle);
 		currAngle = angle;
-	}	
+	}
 	
 	@Override
-	public void handleGET(CoapExchange exchange){
+	public void handleGET(CoapExchange exchange) {
 	}
 
 	@Override
-	public void handlePOST(CoapExchange exchange){
+	public void handlePOST(CoapExchange exchange) {
 		//{ "command":"change", "angle":"90" }
 		//{ "command":"status" }
 		try {
@@ -73,10 +63,4 @@ public FrontTireResource() throws Exception{
 			exchange.respond(responseJson);
 		}		
 	}
-	
-	
-
-	
-	
-	
 }
