@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="70dp"
+    android:gravity="center_vertical"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp">
+
+    <ImageView
+        android:id="@+id/p_photo"
+        android:layout_width="70dp"
+        android:layout_height="50dp"
+        android:layout_marginRight="5dp"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/penguin1" />
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/pname"
+                        android:layout_width="0dp"
+                        android:layout_height="25dp"
+                        android:layout_weight="1"
+                        android:text="펭귄"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:id="@+id/pstar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="25dp"
+                        android:src="@drawable/star10" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/pdesc"
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:text="펭귄의 종류들입니다. 펭귄은 남극 및 오스트레일리아에도 삽니다. 펭귄의 눈을 보면 쪼입니다. 조심하세요"
+                    android:textSize="10sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
