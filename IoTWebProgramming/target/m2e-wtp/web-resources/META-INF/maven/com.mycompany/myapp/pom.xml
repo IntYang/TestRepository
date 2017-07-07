@@ -118,6 +118,14 @@
 			<artifactId>javax.inject</artifactId>
 			<version>1</version>
 		</dependency>
+		
+		<!-- JSOn 라이브러리 설정 -->
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20170516</version>
+		</dependency>
+		
 				
 		<!-- Servlet 바꿈 -->
 			<!-- Servlet 라이브러리 설정 -->

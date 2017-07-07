@@ -1,6 +1,3 @@
-
-
-
 package com.mycompany.myapp.websocket;
 
 import java.util.Date;
@@ -36,28 +33,21 @@ public class TrackingSensorHandler extends TextWebSocketHandler implements Appli
 	@PostConstruct
 	public void init() {
 		coapClient = new CoapClient();
-		coapClient.setURI("coap://192.168.3.22/tracking");
+		coapClient.setURI("coap://192.168.3.22/trackingsensor");
 		coapObserveRelation = coapClient.observe(new CoapHandler() {			
 			@Override
 			public void onLoad(CoapResponse response) {
 				String json = response.getResponseText();
+				
 				JSONObject jsonObject = new JSONObject(json);
+				String tracking = jsonObject.getString("tracking");
 				
-				
-				
-				String trackingT= jsonObject.getString("tracking");
-				int tracking = -1;;
-				
-				if(trackingT.equals("black")){
-					tracking = 1;
-				}
-				if(trackingT.equals("white")){
-					tracking = 0;
-				}
 				jsonObject = new JSONObject();
 				jsonObject.put("time", getUTCTime(new Date().getTime()));
-				jsonObject.put("tracking", tracking);
-			
+				int trackingValue = -1;
+				if(tracking.equals("black")) trackingValue= 1;
+				if(tracking.equals("white")) trackingValue= 0;
+				jsonObject.put("tracking", trackingValue);
 				json = jsonObject.toString();
 				try {
 					for(WebSocketSession session : list) {

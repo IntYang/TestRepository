@@ -1,5 +1,3 @@
-
-
 package com.mycompany.myapp.websocket;
 
 import java.util.Date;
@@ -40,10 +38,11 @@ public class GasSensorHandler extends TextWebSocketHandler implements Applicatio
 			@Override
 			public void onLoad(CoapResponse response) {
 				String json = response.getResponseText();
-				JSONObject jsonObject = new JSONObject(json);
-				double doubleG = Double.parseDouble(jsonObject.getString("gas"));
 				
-				double gas = ((int)(doubleG*10))/10.0;
+				logger.info(json);
+				
+				JSONObject jsonObject = new JSONObject(json);
+				double gas = Double.parseDouble(jsonObject.getString("gas"));
 				
 				jsonObject = new JSONObject();
 				jsonObject.put("time", getUTCTime(new Date().getTime()));

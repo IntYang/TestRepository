@@ -49,7 +49,7 @@ public class HomeController {
 		model.addAttribute("green", jsonObject.getString("green"));
 		model.addAttribute("blue", jsonObject.getString("blue"));
 		
-		//------------------------------------------------------
+		//-------------------------------------------------------
 		jsonObject = new JSONObject();
 		jsonObject.put("command", "status");
 		json = jsonObject.toString();
@@ -58,9 +58,8 @@ public class HomeController {
 		json = coapResponse.getResponseText();
 		jsonObject = new JSONObject(json);
 		model.addAttribute("laseremitterStatus", jsonObject.getString("status"));
-		
-		//---------------------------------------------------------------------
-		
+
+		//-------------------------------------------------------
 		jsonObject = new JSONObject();
 		jsonObject.put("command", "status");
 		json = jsonObject.toString();
@@ -68,11 +67,9 @@ public class HomeController {
 		coapResponse = coapClient.post(json, MediaTypeRegistry.APPLICATION_JSON);
 		json = coapResponse.getResponseText();
 		jsonObject = new JSONObject(json);
-		model.addAttribute("buzzerStatus", jsonObject.getString("status"));
-		
-		//------------------------------------------------------------------
-		
-		
+		model.addAttribute("buzzerStatus", jsonObject.getString("status"));	
+
+		//-------------------------------------------------------
 		jsonObject = new JSONObject();
 		jsonObject.put("command", "status");
 		json = jsonObject.toString();
@@ -80,10 +77,10 @@ public class HomeController {
 		coapResponse = coapClient.post(json, MediaTypeRegistry.APPLICATION_JSON);
 		json = coapResponse.getResponseText();
 		jsonObject = new JSONObject(json);
-		model.addAttribute("ultrasonicsensorAngle", jsonObject.getString("angle"));
+		model.addAttribute("ultrasonicsensorAngle", jsonObject.getString("angle"));	
 		model.addAttribute("ultrasonicsensorDistance", jsonObject.getString("distance"));
-		
-		//---------------------------------------------------------------------------------
+
+		//-------------------------------------------------------
 		jsonObject = new JSONObject();
 		jsonObject.put("command", "status");
 		json = jsonObject.toString();
@@ -91,10 +88,10 @@ public class HomeController {
 		coapResponse = coapClient.post(json, MediaTypeRegistry.APPLICATION_JSON);
 		json = coapResponse.getResponseText();
 		jsonObject = new JSONObject(json);
-		model.addAttribute("lcdline0", jsonObject.getString("line0"));
+		model.addAttribute("lcdline0", jsonObject.getString("line0"));	
 		model.addAttribute("lcdline1", jsonObject.getString("line1"));
 		
-		//-----------------------------------------------------------------------------
+		//-------------------------------------------------------
 		jsonObject = new JSONObject();
 		jsonObject.put("command", "status");
 		json = jsonObject.toString();
@@ -102,9 +99,9 @@ public class HomeController {
 		coapResponse = coapClient.post(json, MediaTypeRegistry.APPLICATION_JSON);
 		json = coapResponse.getResponseText();
 		jsonObject = new JSONObject(json);
-		model.addAttribute("fronttireAngle", jsonObject.getString("angle"));
-		//-------------------------------------------------------------------------
-		
+		model.addAttribute("fronttireAngle", jsonObject.getString("angle"));	
+
+		//-------------------------------------------------------
 		jsonObject = new JSONObject();
 		jsonObject.put("command", "status");
 		json = jsonObject.toString();
@@ -112,12 +109,10 @@ public class HomeController {
 		coapResponse = coapClient.post(json, MediaTypeRegistry.APPLICATION_JSON);
 		json = coapResponse.getResponseText();
 		jsonObject = new JSONObject(json);
-		model.addAttribute("BackwardDirection", jsonObject.getString("direction"));
-		model.addAttribute("BackwardSpeed", jsonObject.getString("speed"));
+		model.addAttribute("backtireDirection", jsonObject.getString("direction"));	
+		model.addAttribute("backtireSpeed", jsonObject.getString("speed"));
 		
-		
-		
-		
+		model.addAttribute("cameraUrl", "http://192.168.3.22:50001?action=stream");
 		coapClient.shutdown();
 		return "controlpanel";
 	}
@@ -166,10 +161,9 @@ public class HomeController {
 	}
 	
 	@RequestMapping("/laseremitter")
-	public void laseremitter(String command, String status, HttpServletResponse response) throws IOException{
+	public void laseremitter(String command, String status, HttpServletResponse response) throws IOException {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("command", command);
-		
 		jsonObject.put("status", status);
 		String reqJson = jsonObject.toString();
 		
@@ -187,10 +181,9 @@ public class HomeController {
 	}
 	
 	@RequestMapping("/buzzer")
-	public void buzzer(String command, String status, HttpServletResponse response) throws IOException{
+	public void buzzer(String command, String status, HttpServletResponse response) throws IOException {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("command", command);
-		
 		jsonObject.put("status", status);
 		String reqJson = jsonObject.toString();
 		
@@ -205,13 +198,12 @@ public class HomeController {
 		pw.write(resJson);
 		pw.flush();
 		pw.close();
-	}
+	}	
 	
 	@RequestMapping("/ultrasonicsensor")
-	public void ultrasonicsensor(String command, String angle, HttpServletResponse response) throws IOException{
+	public void ultrasonicsensor(String command, String angle, HttpServletResponse response) throws IOException {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("command", command);
-		
 		jsonObject.put("angle", angle);
 		String reqJson = jsonObject.toString();
 		
@@ -226,13 +218,12 @@ public class HomeController {
 		pw.write(resJson);
 		pw.flush();
 		pw.close();
-	}
+	}	
 	
 	@RequestMapping("/lcd")
-	public void lcd(String command, String line0, String line1, HttpServletResponse response) throws IOException{
+	public void lcd(String command, String line0, String line1, HttpServletResponse response) throws IOException {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("command", command);
-		
 		jsonObject.put("line0", line0);
 		jsonObject.put("line1", line1);
 		String reqJson = jsonObject.toString();
@@ -248,15 +239,13 @@ public class HomeController {
 		pw.write(resJson);
 		pw.flush();
 		pw.close();
-	}
+	}	
 	
 	@RequestMapping("/fronttire")
-	public void fronttire(String command, String angle, HttpServletResponse response) throws IOException{
+	public void fronttire(String command, String angle, HttpServletResponse response) throws IOException {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("command", command);
-		
 		jsonObject.put("angle", angle);
-		
 		String reqJson = jsonObject.toString();
 		
 		CoapClient coapClient = new CoapClient();
@@ -273,7 +262,7 @@ public class HomeController {
 	}
 	
 	@RequestMapping("/backtire")
-	public void backtire(String command, String direction, String speed, HttpServletResponse response) throws IOException {
+	public void bakcktire(String command, String direction, String speed, HttpServletResponse response) throws IOException {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("command", command);
 		jsonObject.put("direction", direction);
@@ -291,9 +280,17 @@ public class HomeController {
 		pw.write(resJson);
 		pw.flush();
 		pw.close();
-	}
-	
-	
+	}	
 }
+
+
+
+
+
+
+
+
+
+
 
 
