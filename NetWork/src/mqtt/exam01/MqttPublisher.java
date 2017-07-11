@@ -57,7 +57,7 @@ public class MqttPublisher {
 		MqttPublisher publisher = new MqttPublisher();
 		//매 1초 단위로 온도 메시지를 보냄
 		for(int i=1;i<20;i++){
-			publisher.publish("상남자");
+			publisher.publish("temperature" + i);
 			Thread.sleep(1000);
 		}
 		//클라이언트 종료
